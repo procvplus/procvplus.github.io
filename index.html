@@ -493,7 +493,7 @@ function v(id){return ($(id).value||"").trim()}
 function waHref(text){return "https://wa.me/"+PHONE+"?text="+encodeURIComponent(text)}
 function buildMessage(){
   var t=document.querySelector('input[name=f_type]:checked');
-  return ["*Demande de dossier ProCv+*","",
+  return ["*Demande de dossier Bewerbung*","",
     "Prénom : "+v("f_first"),"Nom : "+v("f_last"),
     "Niveau d'allemand : "+v("f_de"),"Ville : "+v("f_city"),"E-mail : "+v("f_mail"),
     "Je cherche : "+(t?t.value:""),"Métier visé : "+v("f_job")].join("\n");
