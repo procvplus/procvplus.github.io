@@ -621,6 +621,12 @@ $("copyMsg").addEventListener("click",function(){
 });
 document.querySelectorAll("input[name=f_type]").forEach(function(r){r.addEventListener("change",updJob)});
 $("f_nocv").addEventListener("change",function(){$("nocvBox").hidden=!this.checked});
+/* Meta Pixel: any click on a WhatsApp link = Contact event */
+document.addEventListener("click",function(e){
+  var a=e.target.closest&&e.target.closest("a[href*='wa.me'],a.wa");
+  if(!a) return;
+  try{ if(window.fbq) fbq("track","Contact",{content_name:"whatsapp_click",content_category:a.id==="waLink"?"after_form":"button"}); }catch(x){}
+},true);
 (function(){
   var fl=document.querySelector(".float"), box=$("infos");
   if(fl&&box&&"IntersectionObserver" in window){
