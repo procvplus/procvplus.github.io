@@ -262,7 +262,7 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
 .minirevs{display:grid;gap:10px;margin:8px 0 2px}.mr{margin:0;display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 20px rgba(19,41,61,.08)}
 .mr .av{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:var(--brand-fg);font:800 1.05rem "Bricolage Grotesque",sans-serif}
 .mr .st{color:#f2b84b;letter-spacing:2px;font-size:.95rem;line-height:1}.mr blockquote{margin:6px 0;font-size:.92rem;line-height:1.55}.mr figcaption{font-size:.8rem;color:var(--muted);font-weight:700}
-.reassure{margin:12px 0 0;padding:10px 12px;text-align:center;font-weight:700;font-size:.86rem;line-height:1.7;color:var(--accent);background:rgba(12,133,119,.08);border-radius:12px}
+.reassure{margin:12px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:8px;font-weight:700;font-size:.84rem;color:var(--accent)}.reassure span{padding:9px 6px;text-align:center;background:rgba(12,133,119,.08);border-radius:10px;white-space:nowrap}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -445,7 +445,7 @@ tick1:"Prêt en 24 à 48 h",tick2:"Conforme DIN 5008 et ATS",tick3:"Suivi direct
 lfH:"Commencez ici",lfP:"Remplissez ces quelques champs. Vous arrivez ensuite sur WhatsApp avec votre message déjà prêt.",
 optAus:"Ausbildung (formation)",optJob:"Emploi",jobPosteLbl:"Poste visé",jobFormLbl:"Formation visée",jobPosteLbl2:"",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"Je n'ai pas de CV : je remplis mes informations ici",noCvP:"Pas de souci. Indiquez ce que vous savez, nous construisons le CV pour vous. Un élément par ligne, avec les dates. Tout est facultatif.",nPhone:"Téléphone / WhatsApp",nPhonePh:"+212 6...",nBirth:"Date de naissance",nBirthPh:"JJ/MM/AAAA",nAddr:"Adresse complète",nAddrPh:"Rue, code postal, ville, pays",nEdu:"Études et diplômes (bac, université…)",nEduPh:"2018 - 2019 | Baccalauréat | Lycée X, Settat\n2019 - 2023 | Licence en économie | Université Y, Settat",nCourse:"Cours de langue (allemand…)",nCoursePh:"09.2023 - 05.2024 | Cours intensif d'allemand | Centre Z, Settat",nExp:"Expériences et stages",nExpPh:"2022 - 2023 | Serveur | Café X, Rabat",nCert:"Certificats et examens",nCertPh:"telc Deutsch B1 | date de l'examen : 14.03.2025",nLang:"Langues et niveaux",nLangPh:"Arabe : langue maternelle, Français : B1, Anglais : A2",nPerm:"Permis de conduire",nPermPh:"Ex : B (ou aucun)",nSkills:"Compétences",nSkillsPh:"Travail en équipe, rigueur, Excel…",nHob:"Centres d'intérêt",nHobPh:"Sport, voyages, lecture…",nWhy:"Pourquoi ce métier / cette formation ?",nWhyPh:"Quelques mots : votre motivation, votre projet en Allemagne",nFiles:"Certificats, diplômes, permis, attestations (PDF ou photo)",nFilesH:"Facultatif. Vous pourrez les envoyer avec le message à l'étape suivante.",
-shareF:"Envoyer mes documents sur WhatsApp",reassure:"✓ Réponse rapide sur WhatsApp<br>✓ Dossier prêt en 24 à 48&nbsp;h<br>✓ Prix fixe 199&nbsp;DH<br>✓ Modifications gratuites, à tout moment",fFirst:"Prénom",fLast:"Nom",fDe:"Niveau d'allemand",fCity:"Ville",fMail:"E-mail",fType:"Je cherche",fJob:"Métier exact visé",choose:"Choisir…",notYet:"Pas encore commencé",
+shareF:"Envoyer mes documents sur WhatsApp",reassure:"<span>✓ Réponse rapide</span><span>✓ Prêt en 24-48&nbsp;h</span><span>✓ Prix fixe</span><span>✓ Retouches gratuites</span>",fFirst:"Prénom",fLast:"Nom",fDe:"Niveau d'allemand",fCity:"Ville",fMail:"E-mail",fType:"Je cherche",fJob:"Métier exact visé",choose:"Choisir…",notYet:"Pas encore commencé",
 send:"Continuer sur WhatsApp",send2:"Ouvrir WhatsApp",copy:"Copier le message",lfS:"Vos informations ne partent qu'au moment où vous envoyez le message sur WhatsApp.",
 errReq:"Un champ est vide ou incorrect : il est entouré en rouge.",copied:"Copié",
 doneH:"Votre message est prêt",doneP:"WhatsApp s'ouvre avec vos informations. S'il ne s'ouvre pas, appuyez sur le bouton ci-dessous. Envoyez aussi votre photo dans la conversation.",
@@ -486,7 +486,7 @@ tick1:"جاهز خلال 24 إلى 48 ساعة",tick2:"وفق معيار DIN 500
 lfH:"ابدأ من هنا",lfP:"املأ هذه الحقول القليلة، ثم تنتقل إلى واتساب ورسالتك جاهزة.",
 optAus:"Ausbildung (تكوين مهني)",optJob:"عمل",jobPosteLbl:"المنصب المطلوب",jobFormLbl:"التكوين المطلوب",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"ليست لدي سيرة ذاتية: سأكتب معلوماتي هنا",noCvP:"لا مشكل. اكتب ما تعرفه وسنبني لك السيرة الذاتية. عنصر في كل سطر مع التواريخ. كل الحقول اختيارية.",nPhone:"الهاتف / واتساب",nPhonePh:"+212 6...",nBirth:"تاريخ الازدياد",nBirthPh:"JJ/MM/AAAA",nAddr:"العنوان الكامل",nAddrPh:"الشارع، الرمز البريدي، المدينة، البلد",nEdu:"الدراسة والشهادات (باك، جامعة…)",nEduPh:"2018 - 2019 | باكالوريا | ثانوية X، سطات\n2019 - 2023 | إجازة في الاقتصاد | جامعة Y، سطات",nCourse:"دورات اللغة (الألمانية…)",nCoursePh:"09.2023 - 05.2024 | دورة مكثفة في الألمانية | مركز Z، سطات",nExp:"التجارب والتداريب",nExpPh:"2022 - 2023 | نادل | مقهى X، الرباط",nCert:"الشواهد والامتحانات",nCertPh:"telc Deutsch B1 | تاريخ الامتحان: 14.03.2025",nLang:"اللغات والمستويات",nLangPh:"العربية: لغة أم، الفرنسية: B1، الإنجليزية: A2",nPerm:"رخصة السياقة",nPermPh:"مثال: B (أو لا يوجد)",nSkills:"المهارات",nSkillsPh:"العمل الجماعي، الدقة، Excel…",nHob:"الاهتمامات",nHobPh:"رياضة، سفر، قراءة…",nWhy:"لماذا هذه المهنة / هذا التكوين؟",nWhyPh:"بضع كلمات: دافعك ومشروعك في ألمانيا",nFiles:"الشواهد والدبلومات ورخصة السياقة والوثائق (PDF أو صورة)",nFilesH:"اختياري. يمكنك إرسالها مع الرسالة في الخطوة التالية.",
-shareF:"إرسال وثائقي عبر واتساب",reassure:"✓ رد سريع على واتساب<br>✓ الملف جاهز في 24 إلى 48 ساعة<br>✓ ثمن ثابت 199 درهم<br>✓ تعديلات مجانية، في أي وقت",fFirst:"الاسم الشخصي",fLast:"الاسم العائلي",fDe:"مستواك في الألمانية",fCity:"المدينة",fMail:"البريد الإلكتروني",fType:"أبحث عن",fJob:"المهنة المطلوبة بالتحديد",choose:"اختر…",notYet:"لم أبدأ بعد",
+shareF:"إرسال وثائقي عبر واتساب",reassure:"<span>✓ رد سريع</span><span>✓ جاهز في 24-48 ساعة</span><span>✓ ثمن ثابت</span><span>✓ تعديلات مجانية</span>",fFirst:"الاسم الشخصي",fLast:"الاسم العائلي",fDe:"مستواك في الألمانية",fCity:"المدينة",fMail:"البريد الإلكتروني",fType:"أبحث عن",fJob:"المهنة المطلوبة بالتحديد",choose:"اختر…",notYet:"لم أبدأ بعد",
 send:"المتابعة عبر واتساب",send2:"فتح واتساب",copy:"نسخ الرسالة",lfS:"لا تُرسل معلوماتك إلا عندما تبعث الرسالة على واتساب.",
 errReq:"هناك خانة فارغة أو غير صحيحة، وهي محاطة باللون الأحمر.",copied:"تم النسخ",
 doneH:"رسالتك جاهزة",doneP:"سيُفتح واتساب بمعلوماتك. إن لم يُفتح، اضغط على الزر أدناه. أرسل صورتك أيضاً في المحادثة.",
@@ -534,20 +534,26 @@ function updJob(){var d=T[lang],f=isForm(),t=document.querySelector('input[name=
 function buildMessage(){
   var t=document.querySelector('input[name=f_type]:checked'), f=isForm();
   var BAR="━━━━━━━━━━━━━━━━━━━━━━";
-  var DOT="▫️ ";
+  var SUB="────────────";
   var L=["\u{1F1E9}\u{1F1EA} DEMANDE DE DOSSIER BEWERBUNG \u{1F1E9}\u{1F1EA}",BAR,"",
     "\u{1F464} CANDIDAT(E)",
-    DOT+"Prénom : "+v("f_first"),DOT+"Nom : "+v("f_last"),DOT+"Ville : "+v("f_city"),DOT+"E-mail : "+v("f_mail"),
-    DOT+"Niveau d'allemand : "+v("f_de"),"",
-    "\u{1F3AF} MON OBJECTIF",
-    DOT+"Je cherche : "+(t?t.value:""),
-    DOT+(f?"Formation visée : ":"Poste visé : ")+v("f_job")];
+    "Prénom : "+v("f_first"),"Nom : "+v("f_last"),"Ville : "+v("f_city"),"E-mail : "+v("f_mail"),
+    "Niveau d'allemand : "+v("f_de"),"",
+    "\u{1F3AF} OBJECTIF",
+    "Je cherche : "+(t?t.value:""),
+    (f?"Formation visée : ":"Poste visé : ")+v("f_job")];
+  function items(id){return v(id).split("\n").map(function(x){return x.trim()}).filter(Boolean)}
   if($("f_nocv").checked){
-    var ex=[["\u{1F4DE} Téléphone","n_phone"],["\u{1F382} Naissance","n_birth"],["\u{1F3E0} Adresse","n_addr"],["\u{1F393} Études","n_edu"],["\u{1F5E3} Cours de langue","n_course"],["\u{1F4BC} Expériences","n_exp"],["\u{1F4DC} Certificats","n_cert"],["\u{1F310} Langues","n_lang"],["\u{1F697} Permis","n_perm"],["\u{1F4AA} Compétences","n_skills"],["⭐ Intérêts","n_hob"],["\u{1F4DD} Motivation","n_why"]].filter(function(p){return v(p[1])});
-    if(ex.length){L.push("","\u{1F4CB} INFOS POUR MON CV");
-      ex.forEach(function(p){var val=v(p[1]);
-        if(val.indexOf("\n")>-1) L.push(p[0]+" :\n"+val.split("\n").filter(function(x){return x.trim()}).map(function(x){return "     ▪️ "+x.trim()}).join("\n"));
-        else L.push(p[0]+" : "+val)});}
+    var blocks=[];
+    var contact=[]; if(v("n_phone")) contact.push("Téléphone : "+v("n_phone")); if(v("n_birth")) contact.push("Date de naissance : "+v("n_birth")); if(v("n_addr")) contact.push("Adresse : "+v("n_addr"));
+    if(contact.length) blocks.push(["COORDONNÉES",contact]);
+    [["ÉTUDES ET DIPLÔMES","n_edu"],["COURS DE LANGUE","n_course"],["EXPÉRIENCES PROFESSIONNELLES","n_exp"],["CERTIFICATS ET EXAMENS","n_cert"],["LANGUES","n_lang"],["PERMIS DE CONDUIRE","n_perm"],["COMPÉTENCES","n_skills"],["CENTRES D'INTÉRÊT","n_hob"],["MOTIVATION","n_why"]].forEach(function(p){
+      var it=items(p[1]); if(it.length) blocks.push([p[0],it.length>1?it.map(function(x){return "• "+x}):it]);
+    });
+    if(blocks.length){
+      L.push("","\u{1F4CB} INFORMATIONS POUR MON CV");
+      blocks.forEach(function(b,i){ L.push("",b[0]); b[1].forEach(function(x){L.push(x)}); });
+    }
   }
   return L.join("\n");
 }
