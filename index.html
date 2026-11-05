@@ -533,26 +533,25 @@ function updJob(){var d=T[lang],f=isForm(),t=document.querySelector('input[name=
   $("f_job").placeholder=f?d.jobPh2:d.jobPh1;}
 function buildMessage(){
   var t=document.querySelector('input[name=f_type]:checked'), f=isForm();
-  var BAR="━━━━━━━━━━━━━━━━━━━━━━";
-  var SUB="────────────";
+  var BAR=new Array(33).join("━");
   var L=["\u{1F1E9}\u{1F1EA} DEMANDE DE DOSSIER BEWERBUNG \u{1F1E9}\u{1F1EA}",BAR,"",
-    "\u{1F464} CANDIDAT(E)",
+    "\u{1F464} CANDIDAT(E) :","",
     "Prénom : "+v("f_first"),"Nom : "+v("f_last"),"Ville : "+v("f_city"),"E-mail : "+v("f_mail"),
     "Niveau d'allemand : "+v("f_de"),"",
-    "\u{1F3AF} OBJECTIF",
+    "\u{1F3AF} OBJECTIF :","",
     "Je cherche : "+(t?t.value:""),
     (f?"Formation visée : ":"Poste visé : ")+v("f_job")];
   function items(id){return v(id).split("\n").map(function(x){return x.trim()}).filter(Boolean)}
   if($("f_nocv").checked){
     var blocks=[];
     var contact=[]; if(v("n_phone")) contact.push("Téléphone : "+v("n_phone")); if(v("n_birth")) contact.push("Date de naissance : "+v("n_birth")); if(v("n_addr")) contact.push("Adresse : "+v("n_addr"));
-    if(contact.length) blocks.push(["COORDONNÉES",contact]);
-    [["ÉTUDES ET DIPLÔMES","n_edu"],["COURS DE LANGUE","n_course"],["EXPÉRIENCES PROFESSIONNELLES","n_exp"],["CERTIFICATS ET EXAMENS","n_cert"],["LANGUES","n_lang"],["PERMIS DE CONDUIRE","n_perm"],["COMPÉTENCES","n_skills"],["CENTRES D'INTÉRÊT","n_hob"],["MOTIVATION","n_why"]].forEach(function(p){
+    if(contact.length) blocks.push(["COORDONNÉES :",contact]);
+    [["ÉTUDES ET DIPLÔMES :","n_edu"],["COURS DE LANGUE :","n_course"],["EXPÉRIENCES PROFESSIONNELLES :","n_exp"],["CERTIFICATS ET EXAMENS :","n_cert"],["LANGUES :","n_lang"],["PERMIS DE CONDUIRE :","n_perm"],["COMPÉTENCES :","n_skills"],["CENTRES D'INTÉRÊT :","n_hob"],["MOTIVATION :","n_why"]].forEach(function(p){
       var it=items(p[1]); if(it.length) blocks.push([p[0],it.length>1?it.map(function(x){return "• "+x}):it]);
     });
     if(blocks.length){
-      L.push("","\u{1F4CB} INFORMATIONS POUR MON CV");
-      blocks.forEach(function(b,i){ L.push("",b[0]); b[1].forEach(function(x){L.push(x)}); });
+      L.push("","\u{1F4CB} INFORMATIONS :");
+      blocks.forEach(function(b){ L.push("",b[0],""); b[1].forEach(function(x){L.push(x)}); });
     }
   }
   return L.join("\n");
