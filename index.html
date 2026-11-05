@@ -533,8 +533,8 @@ function updJob(){var d=T[lang],f=isForm(),t=document.querySelector('input[name=
   $("f_job").placeholder=f?d.jobPh2:d.jobPh1;}
 function buildMessage(){
   var t=document.querySelector('input[name=f_type]:checked'), f=isForm();
-  var BAR=new Array(33).join("━");
-  var L=["\u{1F1E9}\u{1F1EA} DEMANDE DE DOSSIER BEWERBUNG \u{1F1E9}\u{1F1EA}",BAR,"",
+  var BAR=new Array(35).join("=");
+  var L=["```\u{1F1E9}\u{1F1EA} DEMANDE DE DOSSIER BEWERBUNG \u{1F1E9}\u{1F1EA}",BAR+"```","",
     "\u{1F464} CANDIDAT(E) :","",
     "Prénom : "+v("f_first"),"Nom : "+v("f_last"),"Ville : "+v("f_city"),"E-mail : "+v("f_mail"),
     "Niveau d'allemand : "+v("f_de"),"",
