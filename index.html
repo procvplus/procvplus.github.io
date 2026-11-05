@@ -72,15 +72,17 @@ html[lang="ar"] .hero h1{font-size:clamp(2rem,5vw,3.4rem)}
 .hero h1 em,.h2 em{font-style:normal;color:var(--accent)}
 .lead{font-size:1.1rem;color:var(--muted);margin-top:18px;max-width:54ch}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.price-hero{display:inline-flex;flex-direction:column;gap:8px;margin-top:24px;padding:14px 20px 16px;border:2px solid var(--gold);border-radius:18px;background:color-mix(in srgb,var(--gold) 13%,var(--surface));box-shadow:0 8px 24px -14px color-mix(in srgb,var(--gold) 70%,transparent)}
-.ph-lbl{display:inline-block;align-self:flex-start;font-size:.78rem;font-weight:800;letter-spacing:.02em;color:#1b1300;background:var(--gold);padding:3px 10px;border-radius:999px}
-.ph-row{display:flex;align-items:center;gap:16px}
-.ph-amt{display:flex;align-items:baseline;gap:6px;font-family:var(--f-display);font-weight:800;line-height:1;color:var(--fg)}
-.ph-num{font-size:clamp(2.6rem,7vw,3.3rem);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.ph-cur{font-size:1.15rem;color:var(--accent)}
-.ph-txt{display:flex;flex-direction:column;gap:3px;font-size:.95rem;line-height:1.4;padding-inline-start:16px;border-inline-start:1px solid var(--line)}
-.ph-txt strong{color:var(--fg);font-weight:800}
-.ph-txt span{color:var(--muted);font-weight:600}
+.price-hero{display:inline-flex;flex-direction:column;gap:12px;margin-top:24px;padding:16px 22px 16px;border:1px solid color-mix(in srgb,var(--brand) 60%,transparent);border-radius:18px;background:var(--ink);color:var(--ink-fg);box-shadow:0 14px 30px -18px rgba(15,51,80,.65)}
+.ph-lbl{display:inline-block;align-self:flex-start;font-size:.78rem;font-weight:800;color:var(--gold);border:1px solid color-mix(in srgb,var(--gold) 55%,transparent);padding:2px 11px;border-radius:999px}
+.ph-row{display:flex;align-items:center;gap:18px}
+.ph-amt{display:flex;align-items:baseline;gap:6px;font-family:var(--f-display);font-weight:800;line-height:1;color:#fff}
+.ph-num{font-size:clamp(2.8rem,8vw,3.6rem);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.ph-cur{font-size:1.15rem;color:var(--gold)}
+.ph-txt{display:flex;flex-direction:column;gap:3px;font-size:.95rem;line-height:1.45;padding-inline-start:18px;border-inline-start:1px solid rgba(255,255,255,.2)}
+.ph-txt strong{color:#fff;font-weight:800}
+.ph-txt span{color:var(--ink-muted);font-weight:600}
+.ph-foot{font-size:.9rem;font-weight:700;color:var(--ink-fg);border-top:1px solid rgba(255,255,255,.14);padding-top:10px}
+.ph-foot::before{content:"\2713";color:var(--gold);font-weight:800;margin-inline-end:8px}
 @media (max-width:480px){.price-hero{display:flex}.ph-row{gap:12px}.ph-txt{font-size:.88rem;padding-inline-start:12px}}
 .ticks{list-style:none;padding:0;margin:26px 0 0;display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--muted);font-weight:700;font-size:.95rem}
 .ticks li::before{content:"\2713";color:var(--accent);font-weight:800;margin-inline-end:8px}
@@ -309,6 +311,7 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
         <div class="ph-amt"><span class="ph-num" data-t="phNum"></span><span class="ph-cur" data-t="phCur"></span></div>
         <div class="ph-txt"><strong data-t="phT1"></strong><span data-t="phT2"></span></div>
       </div>
+      <div class="ph-foot" data-t="phF"></div>
     </div>
     <div class="cta-row">
       <a class="btn btn-main" href="#infos" data-t="cta1"></a>
@@ -465,7 +468,7 @@ var T = {
 fr:{navCta:"WhatsApp",cta1:"Remplir le formulaire",cta2:"Écrire sur WhatsApp",kicker:"Dossiers de candidature en allemand",
 h1:"Votre avenir en Allemagne <em>commence ici</em>",
 lead:"Nous préparons votre dossier de candidature complet, vite et de façon professionnelle : page de garde, lettre de motivation et CV en allemand, conformes aux normes allemandes.",
-tick1:"Prêt en 24 à 48 h",tick2:"Conforme DIN 5008 et ATS",tick3:"Suivi direct sur WhatsApp",phLbl:"Prix du dossier complet",phNum:PRICE,phCur:"DH",phT1:"Page de garde + lettre + CV",phT2:"Prix unique · prêt en 24 à 48 h",
+tick1:"Prêt en 24 à 48 h",tick2:"Conforme DIN 5008 et ATS",tick3:"Suivi direct sur WhatsApp",phLbl:"Dossier complet",phNum:PRICE,phCur:"DH",phT1:"3 documents en allemand, un seul prix",phT2:"Page de garde + lettre de motivation + CV",phF:"Paiement convenu avec vous sur WhatsApp",
 lfH:"Commencez ici",lfP:"Remplissez ces quelques champs. Vous arrivez ensuite sur WhatsApp avec votre message déjà prêt.",
 optAus:"Ausbildung (formation)",optJob:"Emploi",jobPosteLbl:"Poste visé",jobFormLbl:"Formation visée",jobPosteLbl2:"",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"Je n'ai pas de CV : je remplis mes informations ici",noCvP:"Pas de souci. Indiquez ce que vous savez, nous construisons le CV pour vous. Un élément par ligne, avec les dates. Tout est facultatif.",nPhone:"Téléphone / WhatsApp",nPhonePh:"+212 6...",nBirth:"Date de naissance",nBirthPh:"JJ/MM/AAAA",nAddr:"Adresse complète",nAddrPh:"Rue, code postal, ville, pays",nEdu:"Études et diplômes (bac, université…)",nEduPh:"2018 - 2019 | Baccalauréat | Lycée X, Settat\n2019 - 2023 | Licence en économie | Université Y, Settat",nCourse:"Cours de langue (allemand…)",nCoursePh:"09.2023 - 05.2024 | Cours intensif d'allemand | Centre Z, Settat",nExp:"Expériences et stages",nExpPh:"2022 - 2023 | Serveur | Café X, Rabat",nCert:"Certificats et examens",nCertPh:"telc Deutsch B1 | date de l'examen : 14.03.2025",nLang:"Langues et niveaux",nLangPh:"Arabe : langue maternelle, Français : B1, Anglais : A2",nPerm:"Permis de conduire",nPermPh:"Ex : B (ou aucun)",nSkills:"Compétences",nSkillsPh:"Travail en équipe, rigueur, Excel…",nHob:"Centres d'intérêt",nHobPh:"Sport, voyages, lecture…",nWhy:"Pourquoi ce métier / cette formation ?",nWhyPh:"Quelques mots : votre motivation, votre projet en Allemagne",nFiles:"Certificats, diplômes, permis, attestations (PDF ou photo)",nFilesH:"Facultatif. Vous pourrez les envoyer avec le message à l'étape suivante.",
@@ -506,7 +509,7 @@ wa:"Bonjour, je souhaite commander mon dossier de candidature en allemand. Mon m
 ar:{navCta:"واتساب",cta1:"املأ الاستمارة",cta2:"تواصل عبر واتساب",kicker:"ملفات الترشيح باللغة الألمانية",
 h1:"مستقبلك في ألمانيا <em>يبدأ من هنا</em>",
 lead:"نُعدّ لك ملف الترشيح كاملاً بسرعة وبطريقة احترافية: صفحة الغلاف ورسالة التحفيز والـ CV باللغة الألمانية، وفق المعايير الألمانية.",
-tick1:"جاهز خلال 24 إلى 48 ساعة",tick2:"وفق معيار DIN 5008 وأنظمة ATS",tick3:"متابعة مباشرة عبر واتساب",phLbl:"ثمن الملف كامل",phNum:PRICE,phCur:"درهم",phT1:"الغلاف + رسالة التحفيز + الـ CV",phT2:"ثمن واحد · جاهز خلال 24 إلى 48 ساعة",
+tick1:"جاهز خلال 24 إلى 48 ساعة",tick2:"وفق معيار DIN 5008 وأنظمة ATS",tick3:"متابعة مباشرة عبر واتساب",phLbl:"الملف الكامل",phNum:PRICE,phCur:"درهم",phT1:"3 وثائق بالألمانية بثمن واحد",phT2:"صفحة الغلاف + رسالة التحفيز + الـ CV",phF:"نتفق معك على طريقة الأداء عبر واتساب",
 lfH:"ابدأ من هنا",lfP:"املأ هذه الحقول القليلة، ثم تنتقل إلى واتساب ورسالتك جاهزة.",
 optAus:"Ausbildung (تكوين مهني)",optJob:"عمل",jobPosteLbl:"المنصب المطلوب",jobFormLbl:"التكوين المطلوب",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"ليست لدي سيرة ذاتية: سأكتب معلوماتي هنا",noCvP:"لا مشكل. اكتب ما تعرفه وسنبني لك السيرة الذاتية. عنصر في كل سطر مع التواريخ. كل الحقول اختيارية.",nPhone:"الهاتف / واتساب",nPhonePh:"+212 6...",nBirth:"تاريخ الازدياد",nBirthPh:"JJ/MM/AAAA",nAddr:"العنوان الكامل",nAddrPh:"الشارع، الرمز البريدي، المدينة، البلد",nEdu:"الدراسة والشهادات (باك، جامعة…)",nEduPh:"2018 - 2019 | باكالوريا | ثانوية X، سطات\n2019 - 2023 | إجازة في الاقتصاد | جامعة Y، سطات",nCourse:"دورات اللغة (الألمانية…)",nCoursePh:"09.2023 - 05.2024 | دورة مكثفة في الألمانية | مركز Z، سطات",nExp:"التجارب والتداريب",nExpPh:"2022 - 2023 | نادل | مقهى X، الرباط",nCert:"الشواهد والامتحانات",nCertPh:"telc Deutsch B1 | تاريخ الامتحان: 14.03.2025",nLang:"اللغات والمستويات",nLangPh:"العربية: لغة أم، الفرنسية: B1، الإنجليزية: A2",nPerm:"رخصة السياقة",nPermPh:"مثال: B (أو لا يوجد)",nSkills:"المهارات",nSkillsPh:"العمل الجماعي، الدقة، Excel…",nHob:"الاهتمامات",nHobPh:"رياضة، سفر، قراءة…",nWhy:"لماذا هذه المهنة / هذا التكوين؟",nWhyPh:"بضع كلمات: دافعك ومشروعك في ألمانيا",nFiles:"الشواهد والدبلومات ورخصة السياقة والوثائق (PDF أو صورة)",nFilesH:"اختياري. يمكنك إرسالها مع الرسالة في الخطوة التالية.",
@@ -515,7 +518,7 @@ send:"المتابعة عبر واتساب",send2:"فتح واتساب",copy:"ن
 errReq:"هناك خانة فارغة أو غير صحيحة، وهي محاطة باللون الأحمر.",copied:"تم النسخ",
 doneH:"رسالتك جاهزة",doneP:"سيُفتح واتساب بمعلوماتك. إن لم يُفتح، اضغط على الزر أدناه. أرسل صورتك أيضاً في المحادثة.",
 atsH:"نظام الفرز الآلي (ATS) يقرأ ملفك <em>قبل</em> المسؤول",
-atsP:"تستقبل كثير من الشركات الألمانية الطلبات عبر بوابة إلكترونية مزوّدة بنظام فرز آلي (ATS) يصنّف الملفات قبل أن يفتحها أي شخص.",
+atsP:"تستقبل شركات ألمانية كثيرة الطلبات عبر بوابة إلكترونية مزوّدة بنظام فرز آلي (ATS) يصنّف الملفات قبل أن يفتحها أي شخص.",
 c1a:"ملف مصوَّر بالهاتف أو ممسوح ضوئياً",c1b:"لا يجد النظام أي نص ليقرأه.",
 c2a:"أقسام لا تعتمد العناوين الألمانية",c2b:"يبحث النظام عن عناوين مثل Berufserfahrung وAusbildung وSprachen.",
 c3a:"تواريخ ناقصة أو غير واضحة",c3b:"لكل تجربة شهر وسنة: 01.2020 – 12.2025.",
@@ -534,7 +537,7 @@ s4h:"الدفع",s4p:"نتفق معك على طريقة الأداء عبر وا
 priceH:"ثمن واحد، <em>ملف كامل</em>",priceP:"صفحة الغلاف ورسالة التحفيز والـ CV بالألمانية، جاهزة خلال 24 إلى 48 ساعة.",priceUnit:"درهم",
 pl1:"الغلاف والرسالة والـ CV بالألمانية",pl2:"للعمل (Arbeit) وللتكوين المهني (Ausbildung)",pl3:"ملف PDF جاهز للإرسال",pl4:"وفق معيار DIN 5008 وأنظمة ATS",
 faqH:"<em>أسئلة</em> شائعة",faqP:"تحت كل جواب زر يفتح واتساب لتتابع معنا الحديث.",
-q1:"هل يحترم ملفكم معياري ATS وDIN 5008؟",a1:"نعم. الرسالة منسّقة وفق معيار DIN 5008 (الهوامش وموضع العنوان والتاريخ والتنسيق العام)، والـ CV ملف PDF بنص قابل للقراءة وبالعناوين الألمانية التي تبحث عنها أنظمة ATS.",
+q1:"هل يحترم ملفكم معيار ATS ومعيار DIN 5008؟",a1:"نعم. الرسالة منسّقة وفق معيار DIN 5008 (الهوامش وموضع العنوان والتاريخ والتنسيق العام)، والـ CV ملف PDF بنص قابل للقراءة وبالعناوين الألمانية التي تبحث عنها أنظمة ATS.",
 q2:"كم يستغرق إعداد الملف؟",a2:"يكون الملف جاهزاً خلال 24 إلى 48 ساعة بعد توصلنا بمعلوماتك.",
 q3:"كم الثمن؟",a3:"الملف الكامل (صفحة الغلاف ورسالة التحفيز والـ CV) بـ "+PRICE+" درهماً. نتفق معك على طريقة الأداء عبر واتساب.",
 q4:"هل يصلح للتكوين المهني (Ausbildung)؟",a4:"نعم، نُعدّ ملفات للعمل (Arbeit) وللتكوين المهني (Ausbildung).",
