@@ -600,7 +600,7 @@ $("order").addEventListener("submit",function(e){
   if(!typ&&!firstBad) firstBad=document.querySelector('input[name=f_type]');
   if(firstBad){ $("err").textContent=T[lang].errReq; try{firstBad.focus()}catch(x){} return; }
   $("err").textContent="";
-  try{ if(window.fbq) fbq("track","Lead",{content_name:v("f_job")}); }catch(x){}
+  pixelOnce("Lead",{content_name:v("f_job")}); pixelOnce("Contact",{content_name:"form"});
   var msg=buildMessage(), href=waHref(msg);
   $("prevMsg").textContent=msg; $("waLink").href=href;
   $("order").style.display="none"; $("done").classList.add("on");
@@ -621,11 +621,18 @@ $("copyMsg").addEventListener("click",function(){
 });
 document.querySelectorAll("input[name=f_type]").forEach(function(r){r.addEventListener("change",updJob)});
 $("f_nocv").addEventListener("change",function(){$("nocvBox").hidden=!this.checked});
-/* Meta Pixel: any click on a WhatsApp link = Contact event */
+/* Meta Pixel: one Lead (+ one Contact) per visitor per 24 h, whatever the source (form or WhatsApp click) */
+var _sent={};
+function pixelOnce(ev,params){
+  if(_sent[ev]) return; _sent[ev]=1;
+  try{ var k="procv-"+ev, t=+localStorage.getItem(k)||0; if(Date.now()-t<864e5) return; localStorage.setItem(k,String(Date.now())); }catch(x){}
+  try{ if(window.fbq) fbq("track",ev,params); }catch(x){}
+}
 document.addEventListener("click",function(e){
   var a=e.target.closest&&e.target.closest("a[href*='wa.me'],a.wa");
   if(!a) return;
-  try{ if(window.fbq) fbq("track","Contact",{content_name:"whatsapp_click",content_category:a.id==="waLink"?"after_form":"button"}); }catch(x){}
+  pixelOnce("Lead",{content_name:"whatsapp_click"});
+  pixelOnce("Contact",{content_name:"whatsapp_click"});
 },true);
 (function(){
   var fl=document.querySelector(".float"), box=$("infos");
