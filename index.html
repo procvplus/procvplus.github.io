@@ -259,7 +259,10 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
 :root[data-theme="dark"] .logo{background:#fff;border-radius:8px;padding:3px 6px}
 .float{transition:opacity .25s,transform .25s}.float.off{opacity:0;transform:translateY(24px);pointer-events:none}
 @media (prefers-reduced-motion:no-preference){@keyframes ready{0%,100%{box-shadow:0 0 0 0 rgba(27,158,80,.55)}50%{box-shadow:0 0 0 12px rgba(27,158,80,0)}}#send.ready{animation:ready 1.6s ease-out infinite}}
-.minirev{margin:6px 0 0;padding:12px 14px;border-radius:12px;background:rgba(18,69,107,.06);border-inline-start:4px solid var(--gold)}.minirev blockquote{margin:0 0 4px;font-size:.93rem;line-height:1.5}.minirev figcaption{font-size:.8rem;color:var(--muted);font-weight:700}.reassure{margin:10px 0 0;text-align:center;font-weight:700;font-size:.85rem;color:var(--accent)}
+.minirevs{display:grid;gap:10px;margin:8px 0 2px}.mr{margin:0;display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 20px rgba(19,41,61,.08)}
+.mr .av{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:var(--brand-fg);font:800 1.05rem "Bricolage Grotesque",sans-serif}
+.mr .st{color:#f2b84b;letter-spacing:2px;font-size:.95rem;line-height:1}.mr blockquote{margin:6px 0;font-size:.92rem;line-height:1.55}.mr figcaption{font-size:.8rem;color:var(--muted);font-weight:700}
+.reassure{margin:12px 0 0;padding:10px 12px;text-align:center;font-weight:700;font-size:.86rem;line-height:1.7;color:var(--accent);background:rgba(12,133,119,.08);border-radius:12px}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -324,9 +327,9 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
       <div class="fld"><label for="n_why"><span data-t="nWhy"></span></label><textarea id="n_why" rows="3" data-t-ph="nWhyPh"></textarea></div>
     </div>
     <div class="err" id="err" role="alert"></div>
-    <figure class="minirev" id="miniRev"><blockquote id="miniQ"></blockquote><figcaption id="miniW"></figcaption></figure>
+    <div class="minirevs" id="miniRevs"></div>
     <button type="submit" class="btn btn-wa btn-big" id="send"><svg viewBox="0 0 24 24"><use href="#wa"/></svg><span data-t="send"></span></button>
-    <p class="reassure" data-t="reassure"></p>
+    <p class="reassure" data-t-html="reassure"></p>
     <p class="lf-s" data-t="lfS"></p>
   </form>
   <div class="done" id="done">
@@ -443,7 +446,7 @@ tick1:"Prêt en 24 à 48 h",tick2:"Conforme DIN 5008 et ATS",tick3:"Suivi direct
 lfH:"Commencez ici",lfP:"Remplissez ces quelques champs. Vous arrivez ensuite sur WhatsApp avec votre message déjà prêt.",
 optAus:"Ausbildung (formation)",optJob:"Emploi",jobPosteLbl:"Poste visé",jobFormLbl:"Formation visée",jobPosteLbl2:"",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"Je n'ai pas de CV : je remplis mes informations ici",noCvP:"Pas de souci. Indiquez ce que vous savez, nous construisons le CV pour vous. Un élément par ligne, avec les dates. Tout est facultatif.",nPhone:"Téléphone / WhatsApp",nPhonePh:"+212 6...",nBirth:"Date de naissance",nBirthPh:"JJ/MM/AAAA",nAddr:"Adresse complète",nAddrPh:"Rue, code postal, ville, pays",nEdu:"Études et diplômes (bac, université…)",nEduPh:"2018 - 2019 | Baccalauréat | Lycée X, Settat\n2019 - 2023 | Licence en économie | Université Y, Settat",nCourse:"Cours de langue (allemand…)",nCoursePh:"09.2023 - 05.2024 | Cours intensif d'allemand | Centre Z, Settat",nExp:"Expériences et stages",nExpPh:"2022 - 2023 | Serveur | Café X, Rabat",nCert:"Certificats et examens",nCertPh:"telc Deutsch B1 | date de l'examen : 14.03.2025",nLang:"Langues et niveaux",nLangPh:"Arabe : langue maternelle, Français : B1, Anglais : A2",nPerm:"Permis de conduire",nPermPh:"Ex : B (ou aucun)",nSkills:"Compétences",nSkillsPh:"Travail en équipe, rigueur, Excel…",nHob:"Centres d'intérêt",nHobPh:"Sport, voyages, lecture…",nWhy:"Pourquoi ce métier / cette formation ?",nWhyPh:"Quelques mots : votre motivation, votre projet en Allemagne",nFiles:"Certificats, diplômes, permis, attestations (PDF ou photo)",nFilesH:"Facultatif. Vous pourrez les envoyer avec le message à l'étape suivante.",
-shareF:"Envoyer mes documents sur WhatsApp",reassure:"✓ Réponse sous 24 h · ✓ Prix fixe 199 DH · ✓ Sans engagement",fFirst:"Prénom",fLast:"Nom",fDe:"Niveau d'allemand",fCity:"Ville",fMail:"E-mail",fType:"Je cherche",fJob:"Métier exact visé",choose:"Choisir…",notYet:"Pas encore commencé",
+shareF:"Envoyer mes documents sur WhatsApp",reassure:"✓ Réponse sous 24 h · ✓ Prix fixe 199 DH<br>✓ Modifications gratuites après livraison, à tout moment",fFirst:"Prénom",fLast:"Nom",fDe:"Niveau d'allemand",fCity:"Ville",fMail:"E-mail",fType:"Je cherche",fJob:"Métier exact visé",choose:"Choisir…",notYet:"Pas encore commencé",
 send:"Continuer sur WhatsApp",send2:"Ouvrir WhatsApp",copy:"Copier le message",lfS:"Vos informations ne partent qu'au moment où vous envoyez le message sur WhatsApp.",
 errReq:"Un champ est vide ou incorrect : il est entouré en rouge.",copied:"Copié",
 doneH:"Votre message est prêt",doneP:"WhatsApp s'ouvre avec vos informations. S'il ne s'ouvre pas, appuyez sur le bouton ci-dessous. Envoyez aussi votre photo dans la conversation.",
@@ -484,7 +487,7 @@ tick1:"جاهز خلال 24 إلى 48 ساعة",tick2:"وفق معيار DIN 500
 lfH:"ابدأ من هنا",lfP:"املأ هذه الحقول القليلة، ثم تنتقل إلى واتساب ورسالتك جاهزة.",
 optAus:"Ausbildung (تكوين مهني)",optJob:"عمل",jobPosteLbl:"المنصب المطلوب",jobFormLbl:"التكوين المطلوب",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"ليست لدي سيرة ذاتية: سأكتب معلوماتي هنا",noCvP:"لا مشكل. اكتب ما تعرفه وسنبني لك السيرة الذاتية. عنصر في كل سطر مع التواريخ. كل الحقول اختيارية.",nPhone:"الهاتف / واتساب",nPhonePh:"+212 6...",nBirth:"تاريخ الازدياد",nBirthPh:"JJ/MM/AAAA",nAddr:"العنوان الكامل",nAddrPh:"الشارع، الرمز البريدي، المدينة، البلد",nEdu:"الدراسة والشهادات (باك، جامعة…)",nEduPh:"2018 - 2019 | باكالوريا | ثانوية X، سطات\n2019 - 2023 | إجازة في الاقتصاد | جامعة Y، سطات",nCourse:"دورات اللغة (الألمانية…)",nCoursePh:"09.2023 - 05.2024 | دورة مكثفة في الألمانية | مركز Z، سطات",nExp:"التجارب والتداريب",nExpPh:"2022 - 2023 | نادل | مقهى X، الرباط",nCert:"الشواهد والامتحانات",nCertPh:"telc Deutsch B1 | تاريخ الامتحان: 14.03.2025",nLang:"اللغات والمستويات",nLangPh:"العربية: لغة أم، الفرنسية: B1، الإنجليزية: A2",nPerm:"رخصة السياقة",nPermPh:"مثال: B (أو لا يوجد)",nSkills:"المهارات",nSkillsPh:"العمل الجماعي، الدقة، Excel…",nHob:"الاهتمامات",nHobPh:"رياضة، سفر، قراءة…",nWhy:"لماذا هذه المهنة / هذا التكوين؟",nWhyPh:"بضع كلمات: دافعك ومشروعك في ألمانيا",nFiles:"الشواهد والدبلومات ورخصة السياقة والوثائق (PDF أو صورة)",nFilesH:"اختياري. يمكنك إرسالها مع الرسالة في الخطوة التالية.",
-shareF:"إرسال وثائقي عبر واتساب",reassure:"✓ رد خلال 24 ساعة · ✓ ثمن ثابت 199 درهم · ✓ بدون التزام",fFirst:"الاسم الشخصي",fLast:"الاسم العائلي",fDe:"مستواك في الألمانية",fCity:"المدينة",fMail:"البريد الإلكتروني",fType:"أبحث عن",fJob:"المهنة المطلوبة بالتحديد",choose:"اختر…",notYet:"لم أبدأ بعد",
+shareF:"إرسال وثائقي عبر واتساب",reassure:"✓ رد خلال 24 ساعة · ✓ ثمن ثابت 199 درهم<br>✓ تعديلات مجانية بعد التسليم، في أي وقت",fFirst:"الاسم الشخصي",fLast:"الاسم العائلي",fDe:"مستواك في الألمانية",fCity:"المدينة",fMail:"البريد الإلكتروني",fType:"أبحث عن",fJob:"المهنة المطلوبة بالتحديد",choose:"اختر…",notYet:"لم أبدأ بعد",
 send:"المتابعة عبر واتساب",send2:"فتح واتساب",copy:"نسخ الرسالة",lfS:"لا تُرسل معلوماتك إلا عندما تبعث الرسالة على واتساب.",
 errReq:"هناك خانة فارغة أو غير صحيحة، وهي محاطة باللون الأحمر.",copied:"تم النسخ",
 doneH:"رسالتك جاهزة",doneP:"سيُفتح واتساب بمعلوماتك. إن لم يُفتح، اضغط على الزر أدناه. أرسل صورتك أيضاً في المحادثة.",
@@ -557,7 +560,16 @@ function apply(){
   $("lang").textContent = lang==="ar"?"Français":"العربية";
   document.querySelectorAll("[data-t-ph]").forEach(function(el){var k=el.getAttribute("data-t-ph"); if(d[k]!==undefined) el.placeholder=d[k]});
   updJob();
-  (function(){var r=REVIEWS[0]; $("miniQ").textContent="\u201C"+(lang==="ar"?r.ar:r.fr)+"\u201D"; $("miniW").textContent="\u2605\u2605\u2605\u2605\u2605  "+r.name+" \u00B7 Instagram";})();
+  (function(){var box=$("miniRevs"); box.textContent="";
+    [0,1].forEach(function(i){var r=REVIEWS[i];
+      var f=document.createElement("figure"); f.className="mr";
+      var av=document.createElement("span"); av.className="av"; av.textContent=r.name.charAt(0);
+      var b=document.createElement("div"); b.className="mb";
+      var st=document.createElement("div"); st.className="st"; st.textContent="\u2605\u2605\u2605\u2605\u2605";
+      var q=document.createElement("blockquote"); q.textContent=(lang==="ar"?r.ar:r.fr);
+      var w=document.createElement("figcaption"); w.textContent=r.name+" \u00B7 Instagram";
+      b.appendChild(st); b.appendChild(q); b.appendChild(w); f.appendChild(av); f.appendChild(b); box.appendChild(f);});
+  })();
   $("amt").textContent=PRICE;
   var box=$("revList"); box.textContent="";
   REVIEWS.forEach(function(r){
