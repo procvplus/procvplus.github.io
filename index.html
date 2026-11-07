@@ -599,18 +599,17 @@ function updJob(){var d=T[lang],f=isForm(),t=document.querySelector('input[name=
   $("jobLbl").textContent=t?(f?d.jobFormLbl:d.jobPosteLbl):d.fJob;
   $("f_job").placeholder=f?d.jobPh2:d.jobPh1;}
 function buildMessage(){
-  var t=document.querySelector('input[name=f_type]:checked'), f=isForm();
-  var BAR=new Array(25).join("=");
-  var L=["السلام عليكم، بغيت نطلب ملف الترشيح بالألمانية \u{1F447}","","```\u{1F1E9}\u{1F1EA} DOSSIER BEWERBUNG \u{1F1E9}\u{1F1EA}",BAR+"```","",
-    "\u{1F464} CANDIDAT(E) :","",
-    "Nom complet : "+v("f_first"),
-    "Niveau d'allemand : "+v("f_de"),"",
-    "\u{1F3AF} OBJECTIF :","",
-    "Je cherche : "+(t?t.value:""),
-    (f?"Formation visée : ":"Poste visé : ")+v("f_job"),"",
-    "\u{1F4B0} Offre : Dossier complet 199 DH \u2714",
-    "\u{1F4CE} CV actuel : "+($("f_nocv").checked?"pas de CV (infos ci-dessous)":"je l'envoie ici avec ma photo"),
-    "\u{1F310} Source : site procvplus.online"];
+  var t=document.querySelector('input[name=f_type]:checked'), f=isForm(), nocv=$("f_nocv").checked;
+  var L=["Bonjour \u{1F44B} Je souhaite commander mon dossier de candidature en allemand.","",
+    "*\u{1F1E9}\u{1F1EA} DOSSIER BEWERBUNG*","",
+    "\u{1F464} Nom complet : "+v("f_first"),
+    "\u{1F5E3}\uFE0F Niveau d'allemand : "+v("f_de"),
+    "\u{1F3AF} Je cherche : "+(t?t.value:""),
+    "\u{1F4BC} "+(f?"Formation visée : ":"Poste visé : ")+v("f_job"),"",
+    "\u{1F4B0} Offre : dossier complet, 199\u00A0DH \u2714",
+    "\u{1F4CE} CV : "+(nocv?"pas de CV, mes infos sont ci-dessous":"je l'envoie ici"),
+    "\u{1F4F7} Photo : je l'envoie ici",
+    "\u{1F310} Source : procvplus.online"];
   function items(id){return v(id).split("\n").map(function(x){return x.trim()}).filter(Boolean)}
   if($("f_nocv").checked){
     var blocks=[];
@@ -624,7 +623,7 @@ function buildMessage(){
       blocks.forEach(function(b){ L.push("",b[0],""); b[1].forEach(function(x){L.push(x)}); });
     }
   }
-  return L.join("\n");
+  return L.map(function(x){return x?"\u200E"+x:x}).join("\n");
 }
 function apply(){
   var d=T[lang];
