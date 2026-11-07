@@ -280,6 +280,28 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
 .mr .av{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:var(--brand-fg);font:800 1.05rem "Bricolage Grotesque",sans-serif}
 .mr .st{color:#f2b84b;letter-spacing:2px;font-size:.95rem;line-height:1}.mr blockquote{margin:6px 0;font-size:.92rem;line-height:1.55}.mr figcaption{font-size:.8rem;color:var(--muted);font-weight:700}
 .reassure{margin:12px 0 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-weight:700;font-size:.84rem;color:var(--accent)}.reassure span{padding:9px 14px;text-align:center;background:rgba(12,133,119,.08);border-radius:10px;white-space:nowrap}
+.needs{display:grid;gap:8px}
+.need{display:flex;align-items:flex-start;gap:10px;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:.7em .9em;cursor:pointer;font-weight:700;line-height:1.4}
+.need input{accent-color:var(--accent);width:18px;height:18px;flex:none;margin-top:.15em}
+.need:has(input:checked){border-color:var(--accent);background:rgba(12,133,119,.08)}
+.nofit{border:1px solid #e0a43a;background:rgba(242,184,75,.14);border-radius:12px;padding:12px 14px;font-size:.92rem;line-height:1.55}
+.nofit[hidden],#qBody[hidden]{display:none}
+.nofit p{margin:4px 0 0}
+#qBody{display:grid;gap:12px}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.fitc{border-radius:18px;padding:20px 22px;border:1px solid var(--line);background:var(--surface);box-shadow:0 10px 26px rgba(19,41,61,.08)}
+.fitc h3{font-size:1.15rem;margin-bottom:10px}
+.fitc ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.fitc li{position:relative;padding-inline-start:30px;line-height:1.5}
+.fitc li::before{position:absolute;inset-inline-start:0;top:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.8rem}
+.fitc.yes{border-color:rgba(12,133,119,.45)}.fitc.yes li::before{content:"\2713";background:rgba(12,133,119,.14);color:var(--accent)}
+.fitc.no{border-color:rgba(192,57,43,.35)}.fitc.no li::before{content:"\2715";background:rgba(192,57,43,.12);color:#c0392b}
+@media (max-width:860px){.fit{grid-template-columns:1fr}}
+.agree{display:flex;gap:10px;align-items:flex-start;font-weight:700;font-size:.92rem;cursor:pointer;background:rgba(12,133,119,.07);border:1px solid var(--line);border-radius:12px;padding:12px 14px;line-height:1.45}
+.agree input{width:20px;height:20px;flex:none;accent-color:var(--accent);margin-top:.1em}
+.lvlnote{font-size:.86rem;color:var(--muted);background:rgba(242,184,75,.12);border-radius:10px;padding:10px 12px;margin:0}
+.lvlnote[hidden]{display:none}
+.notice{margin-top:14px;font-size:.88rem;font-weight:700;color:var(--muted);border-inline-start:3px solid #e0a43a;padding-inline-start:10px}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -312,24 +334,27 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
     </div>
     <div class="cta-row">
       <a class="btn btn-main" href="#infos" data-t="cta1"></a>
-      <a class="btn btn-line wa" href="#"><svg viewBox="0 0 24 24" style="color:var(--wa)"><use href="#wa"/></svg><span data-t="cta2"></span></a>
+      <a class="btn btn-line" href="#how"><span data-t="ctaHow"></span></a>
     </div>
     <ul class="ticks"><li data-t="tick1"></li><li data-t="tick2"></li><li data-t="tick3"></li></ul>
+    <p class="notice" data-t="notice"></p>
   </div>
   <div class="leadform" id="infos">
   <form id="order" novalidate>
     <h2 class="lf-h" data-t="lfH"></h2>
     <p class="lf-p" data-t="lfP"></p>
-    <div class="row">
-      <div class="fld"><label for="f_first"><span data-t="fFirst"></span> <span class="r">*</span></label><input id="f_first" type="text" autocomplete="given-name"></div>
-      <div class="fld"><label for="f_last"><span data-t="fLast"></span> <span class="r">*</span></label><input id="f_last" type="text" autocomplete="family-name"></div>
-    </div>
-    <div class="row">
-      <div class="fld"><label for="f_de"><span data-t="fDe"></span> <span class="r">*</span></label>
-        <select id="f_de"><option value="" data-t="choose"></option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option><option value="Pas encore commencé" data-t="notYet"></option></select></div>
-      <div class="fld"><label for="f_city"><span data-t="fCity"></span> <span class="r">*</span></label><input id="f_city" type="text" autocomplete="address-level2"></div>
-    </div>
-    <div class="fld"><label for="f_mail"><span data-t="fMail"></span> <span class="r">*</span></label><input id="f_mail" type="email" autocomplete="email" dir="ltr"></div>
+    <div class="fld"><span class="lb"><span data-t="fNeed"></span> <span class="r">*</span></span>
+      <div class="needs" role="radiogroup">
+        <label class="need"><input type="radio" name="f_need" value="dossier"> <span data-t="needDossier"></span></label>
+        <label class="need"><input type="radio" name="f_need" value="deja"> <span data-t="needDeja"></span></label>
+        <label class="need"><input type="radio" name="f_need" value="contrat"> <span data-t="needContrat"></span></label>
+      </div></div>
+    <div class="nofit" id="noFit" hidden><strong data-t="noFitH"></strong><p data-t="noFitP"></p></div>
+    <div id="qBody">
+    <div class="fld"><label for="f_first"><span data-t="fFull"></span> <span class="r">*</span></label><input id="f_first" type="text" autocomplete="name"></div>
+    <input id="f_last" type="hidden" value=""><input id="f_city" type="hidden" value=""><input id="f_mail" type="hidden" value="">
+    <div class="fld"><label for="f_de"><span data-t="fDe"></span> <span class="r">*</span></label>
+      <select id="f_de"><option value="" data-t="choose"></option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option><option value="Pas encore commencé" data-t="notYet"></option></select></div>
     <div class="fld"><span class="lb"><span data-t="fType"></span> <span class="r">*</span></span>
       <div class="opts" role="radiogroup">
         <label class="opt"><input type="radio" name="f_type" value="Ausbildung"> Ausbildung</label>
@@ -350,6 +375,9 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
       <div class="fld"><label for="n_hob"><span data-t="nHob"></span></label><input id="n_hob" type="text" autocomplete="off" data-t-ph="nHobPh"></div>
       <div class="fld"><label for="n_why"><span data-t="nWhy"></span></label><textarea id="n_why" rows="3" data-t-ph="nWhyPh"></textarea></div>
     </div>
+    <label class="agree" id="agreeLbl"><input type="checkbox" id="f_agree"> <span data-t="agree"></span></label>
+    <p class="lvlnote" id="lvlNote" hidden data-t="lvlNote"></p>
+    </div>
     <div class="err" id="err" role="alert"></div>
     <div class="minirevs" id="miniRevs"></div>
     <button type="submit" class="btn btn-wa btn-big" id="send"><svg viewBox="0 0 24 24"><use href="#wa"/></svg><span data-t="send"></span></button>
@@ -363,6 +391,15 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
   </div>
   </div>
 </div>
+
+<section class="s"><div class="wrap">
+  <h2 class="h2" data-t-html="fitH"></h2><p class="sub" data-t="fitP"></p>
+  <div class="fit">
+    <div class="fitc yes"><h3 data-t="fitYesH"></h3><ul><li data-t="fy1"></li><li data-t="fy2"></li><li data-t="fy3"></li><li data-t="fy4"></li></ul></div>
+    <div class="fitc no"><h3 data-t="fitNoH"></h3><ul><li data-t="fn1"></li><li data-t="fn2"></li><li data-t="fn3"></li></ul></div>
+  </div>
+  <div class="cta-row" style="justify-content:center;margin-top:22px"><a class="btn btn-main" href="#infos" data-t="fitCta"></a></div>
+</div></section>
 
 <div class="ink full"><div class="wrap">
   <div><h2 class="h2" data-t-html="atsH"></h2><p class="sub" data-t="atsP"></p></div>
@@ -403,7 +440,7 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
   </div>
 </div></section>
 
-<section class="s" style="padding-top:0"><div class="wrap">
+<section class="s" id="how" style="padding-top:0"><div class="wrap">
   <h2 class="h2" data-t-html="stepsH"></h2>
   <ol class="steps">
     <li><h3 data-t="s1h"></h3><p data-t="s1p"></p></li>
@@ -418,13 +455,14 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
     <div><h2 class="h2" data-t-html="priceH"></h2><p class="sub" data-t="priceP"></p>
       <ul class="plist"><li data-t="pl1"></li><li data-t="pl2"></li><li data-t="pl3"></li><li data-t="pl4"></li></ul></div>
     <div class="pcard"><div class="amt" id="amt">199</div><div class="unit" data-t="priceUnit"></div>
-      <a class="btn btn-wa wa" href="#"><svg viewBox="0 0 24 24"><use href="#wa"/></svg><span data-t="cta2"></span></a></div>
+      <a class="btn btn-main" href="#infos" data-t="cta1"></a></div>
   </div>
 </div></section>
 
 <section class="s" id="faq" style="padding-top:0"><div class="wrap">
   <h2 class="h2" data-t-html="faqH"></h2><p class="sub" data-t="faqP"></p>
   <div class="faq">
+    <details open><summary data-t="q0"></summary><p data-t="a0"></p></details>
     <details><summary data-t="q1"></summary><p data-t="a1"></p><a class="wa" href="#" data-t="askMore"></a></details>
     <details><summary data-t="q2"></summary><p data-t="a2"></p><a class="wa" href="#" data-t="askMore"></a></details>
     <details><summary data-t="q3"></summary><p data-t="a3"></p><a class="wa" href="#" data-t="askMore"></a></details>
@@ -435,7 +473,7 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
 
 <div class="wrap"><div class="final">
   <h2 data-t="finH"></h2><p data-t="finP"></p>
-  <div class="cta-row"><a class="btn btn-main" href="#infos" data-t="cta1"></a><a class="btn btn-wa wa" href="#"><svg viewBox="0 0 24 24"><use href="#wa"/></svg><span data-t="cta2"></span></a></div>
+  <div class="cta-row"><a class="btn btn-main" href="#infos" data-t="cta1"></a></div>
   <p style="margin-top:16px"><span data-t="orNum"></span> <span class="num">+212 638 304 933</span></p>
   <div class="soc"><a href="https://www.instagram.com/procvplus/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.500 5.500 0 0 1 22 7.500v9a5.500 5.500 0 0 1-5.500 5.500h-9A5.500 5.500 0 0 1 2 16.500v-9A5.500 5.500 0 0 1 7.500 2zm0 2A3.500 3.500 0 0 0 4 7.500v9A3.500 3.500 0 0 0 7.500 20h9a3.500 3.500 0 0 0 3.500-3.500v-9A3.500 3.500 0 0 0 16.500 4zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.300-3.200a1.200 1.200 0 1 1 0 2.400 1.200 1.200 0 0 1 0-2.400z"/></svg>Instagram</a><a href="https://www.tiktok.com/@procvplus" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.600 3c.3 2.200 1.600 3.700 3.900 3.900v2.900c-1.400.1-2.700-.3-3.900-1.100v6.100c0 3.100-2.500 5.200-5.300 5.200-3 0-5.300-2.300-5.300-5.200 0-3.200 2.700-5.500 5.900-5.100v3c-1.600-.4-3 .6-3 2.100 0 1.200.9 2.200 2.200 2.200 1.300 0 2.200-.9 2.200-2.400V3h3.300z"/></svg>TikTok</a></div>
 </div></div>
@@ -463,10 +501,10 @@ var REVIEWS = [
 
 var T = {
 fr:{navCta:"WhatsApp",cta1:"Remplir le formulaire",cta2:"Écrire sur WhatsApp",kicker:"Dossiers de candidature en allemand",
-h1:"Votre avenir en Allemagne <em>commence ici</em>",
-lead:"Nous préparons votre dossier de candidature complet, vite et de façon professionnelle : page de garde, lettre de motivation et CV en allemand, conformes aux normes allemandes.",
+h1:"Un dossier en allemand <em>qui convainc les entreprises</em>",
+lead:"Vous postulez vous-même en Allemagne (Ausbildung ou emploi) ? Nous rédigeons votre dossier complet en allemand : page de garde, lettre de motivation et CV, conformes aux normes allemandes. Vous l'envoyez, les recruteurs le lisent.",
 tick1:"Prêt en 24 à 48 h",tick2:"Conforme DIN 5008 et ATS",tick3:"Suivi direct sur WhatsApp",phLbl:"Dossier complet",phNum:PRICE,phCur:"DH",phT1:"3 documents en allemand, un seul prix",phT2:"Page de garde + lettre de motivation + CV",
-lfH:"Commencez ici",lfP:"Remplissez ces quelques champs. Vous arrivez ensuite sur WhatsApp avec votre message déjà prêt.",
+lfH:"Commencez ici",lfP:"Quelques questions rapides (1 minute), puis vous arrivez sur WhatsApp avec votre message déjà prêt.",fNeed:"De quoi avez-vous besoin ?",needDeja:"J'ai déjà mon dossier, je cherche un contrat ou une entreprise",agree:"J'ai compris : je paie 199 DH pour la préparation de mon dossier, sans contrat de travail ni visa.",errAgree:"Cochez la case pour confirmer le prix et le service.",lvlNote:"Bon à savoir : la plupart des entreprises demandent au moins le niveau B1 pour une Ausbildung. Votre dossier peut tout de même être préparé.",ctaHow:"Comment ça marche ?",fitH:"Ce service est-il <em>fait pour vous</em> ?",fitP:"Pour ne faire perdre de temps à personne, voici exactement ce que nous faisons, et ce que nous ne faisons pas.",fitYesH:"Fait pour vous si…",fy1:"Vous postulez vous-même à une Ausbildung ou à un emploi en Allemagne",fy2:"Vous avez besoin d'un CV, d'une lettre et d'une page de garde en allemand",fy3:"Vous voulez un dossier adapté à votre métier, pas un modèle copié",fy4:"Vous voulez un dossier prêt en 24 à 48 h",fitNoH:"Pas pour vous si…",fn1:"Vous cherchez un contrat de travail ou une promesse d'embauche",fn2:"Vous cherchez un visa ou quelqu'un qui fait les démarches à votre place",fn3:"Vous avez déjà un dossier complet en allemand",fitCta:"C'est pour moi : je commence",q0:"Vous trouvez-vous un contrat ou un visa ?",a0:"Non. Nous préparons uniquement votre dossier de candidature en allemand. C'est vous qui postulez auprès des entreprises. Méfiez-vous de quiconque vend des contrats de travail.",needDossier:"Je veux qu'on me prépare mon dossier (CV + lettre de motivation + page de garde) pour 199 DH",needContrat:"Je cherche un contrat de travail, un visa ou quelqu'un qui me trouve un emploi",noFitH:"Nous ne proposons pas de contrats de travail ni de visas.",noFitP:"Notre service : préparer votre dossier de candidature en allemand (199 DH), que vous envoyez ensuite vous-même aux entreprises. Si c'est ce qu'il vous faut, choisissez la première option.",fFull:"Nom complet",notice:"⚠️ Nous ne vendons ni contrats de travail ni visas : uniquement la préparation de votre dossier de candidature en allemand.",errNeed:"Choisissez d'abord ce dont vous avez besoin.",
 optAus:"Ausbildung (formation)",optJob:"Emploi",jobPosteLbl:"Poste visé",jobFormLbl:"Formation visée",jobPosteLbl2:"",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"Je n'ai pas de CV : je remplis mes informations ici",noCvP:"Pas de souci. Indiquez ce que vous savez, nous construisons le CV pour vous. Un élément par ligne, avec les dates. Tout est facultatif.",nPhone:"Téléphone / WhatsApp",nPhonePh:"+212 6...",nBirth:"Date de naissance",nBirthPh:"JJ/MM/AAAA",nAddr:"Adresse complète",nAddrPh:"Rue, code postal, ville, pays",nEdu:"Études et diplômes (bac, université…)",nEduPh:"2018 - 2019 | Baccalauréat | Lycée X, Settat\n2019 - 2023 | Licence en économie | Université Y, Settat",nCourse:"Cours de langue (allemand…)",nCoursePh:"09.2023 - 05.2024 | Cours intensif d'allemand | Centre Z, Settat",nExp:"Expériences et stages",nExpPh:"2022 - 2023 | Serveur | Café X, Rabat",nCert:"Certificats et examens",nCertPh:"telc Deutsch B1 | date de l'examen : 14.03.2025",nLang:"Langues et niveaux",nLangPh:"Arabe : langue maternelle, Français : B1, Anglais : A2",nPerm:"Permis de conduire",nPermPh:"Ex : B (ou aucun)",nSkills:"Compétences",nSkillsPh:"Travail en équipe, rigueur, Excel…",nHob:"Centres d'intérêt",nHobPh:"Sport, voyages, lecture…",nWhy:"Pourquoi ce métier / cette formation ?",nWhyPh:"Quelques mots : votre motivation, votre projet en Allemagne",nFiles:"Certificats, diplômes, permis, attestations (PDF ou photo)",nFilesH:"Facultatif. Vous pourrez les envoyer avec le message à l'étape suivante.",
 shareF:"Envoyer mes documents sur WhatsApp",reassure:"<span>✓ Réponse rapide</span><span>✓ Prêt en 24-48&nbsp;h</span><span>✓ Retouches gratuites</span>",fFirst:"Prénom",fLast:"Nom",fDe:"Niveau d'allemand",fCity:"Ville",fMail:"E-mail",fType:"Je cherche",fJob:"Métier exact visé",choose:"Choisir…",notYet:"Pas encore commencé",
@@ -504,10 +542,10 @@ floatCta:"Commander mon dossier",
 disc:"ProCv+ rédige des dossiers de candidature en allemand. Nous ne vendons pas d'emplois et ne fournissons ni contrat de travail, ni visa, ni place d'Ausbildung. La décision appartient à l'entreprise ou à l'établissement.",
 wa:"Bonjour, je souhaite commander mon dossier de candidature en allemand. Mon métier visé : ",waq:"Bonjour, j'ai une question : "},
 ar:{navCta:"واتساب",cta1:"املأ الاستمارة",cta2:"تواصل عبر واتساب",kicker:"ملفات الترشيح باللغة الألمانية",
-h1:"مستقبلك في ألمانيا <em>يبدأ من هنا</em>",
-lead:"نُعدّ لك ملف الترشيح كاملاً بسرعة وبطريقة احترافية: صفحة الغلاف ورسالة التحفيز والـ CV باللغة الألمانية، وفق المعايير الألمانية.",
+h1:"ملف ترشيح بالألمانية <em>كيقنع الشركات</em>",
+lead:"كتصيفط بوحدك للشركات فألمانيا (Ausbildung ولا خدمة)؟ كنكتبو ليك الملف كامل بالألمانية: صفحة الغلاف، رسالة التحفيز والـ CV، وفق المعايير الألمانية. نتا كتصيفطو، والشركات كتقراه.",
 tick1:"جاهز خلال 24 إلى 48 ساعة",tick2:"وفق معيار DIN 5008 وأنظمة ATS",tick3:"متابعة مباشرة عبر واتساب",phLbl:"الملف الكامل",phNum:PRICE,phCur:"درهم",phT1:"3 وثائق بالألمانية بثمن واحد",phT2:"صفحة الغلاف + رسالة التحفيز + الـ CV",
-lfH:"ابدأ من هنا",lfP:"املأ هذه الحقول القليلة، ثم تنتقل إلى واتساب ورسالتك جاهزة.",
+lfH:"ابدأ من هنا",lfP:"شي أسئلة سريعة (دقيقة وحدة)، ثم تنتقل إلى واتساب ورسالتك جاهزة.",fNeed:"شنو كتحتاج بالضبط؟",needDeja:"عندي الملف ديجا، كنقلب على عقد ولا شركة",agree:"فهمت: كنخلص 199 درهم على تحضير الملف ديالي، بلا عقد عمل وبلا فيزا.",errAgree:"أكد الثمن والخدمة بالعلامة ✓ باش تكمل.",lvlNote:"معلومة: أغلب الشركات كتطلب على الأقل مستوى B1 للأوسبيلدونغ. ولكن نقدرو نوجدو ليك الملف عادي.",ctaHow:"كيفاش كنخدمو؟",fitH:"واش هاد الخدمة <em>ليك</em>؟",fitP:"باش ما نضيعو الوقت لحتى واحد، هادشي اللي كنديرو بالضبط، وهادشي اللي ما كنديروش.",fitYesH:"ليك إلا…",fy1:"كتصيفط بوحدك لـ Ausbildung ولا خدمة فألمانيا",fy2:"محتاج CV، رسالة التحفيز وصفحة الغلاف بالألمانية",fy3:"باغي ملف مكتوب على قد المهنة ديالك، ماشي نموذج منقول",fy4:"باغي الملف جاهز فـ 24 حتى 48 ساعة",fitNoH:"ماشي ليك إلا…",fn1:"كتقلب على عقد عمل ولا وعد بالخدمة",fn2:"كتقلب على فيزا ولا شي واحد يدير ليك الإجراءات",fn3:"عندك ديجا ملف كامل بالألمانية",fitCta:"هادشي اللي محتاج، نبدا دابا",q0:"واش كتلقاو ليا عقد عمل ولا فيزا؟",a0:"لا. كنوجدو غير ملف الترشيح بالألمانية، ونتا اللي كتصيفطو للشركات. رد البال من أي واحد كيبيع عقود الخدمة.",needDossier:"باغي توجدو ليا الملف ديالي (CV + رسالة التحفيز + صفحة الغلاف) بـ 199 درهم",needContrat:"كنقلب على عقد عمل، فيزا، ولا شي واحد يلقى ليا خدمة",noFitH:"حنا ما كنعطيوش عقود عمل ولا فيزا.",noFitP:"الخدمة ديالنا هي نوجدو ليك ملف الترشيح بالألمانية بـ 199 درهم، ونتا اللي كتصيفطو للشركات. إلا هادشي اللي محتاج، ختار الاختيار الأول.",fFull:"الاسم الكامل",notice:"⚠️ ما كنبيعوش عقود عمل ولا فيزا: غير كنوجدو ملف الترشيح ديالك بالألمانية.",errNeed:"ختار الأول شنو كتحتاج.",
 optAus:"Ausbildung (تكوين مهني)",optJob:"عمل",jobPosteLbl:"المنصب المطلوب",jobFormLbl:"التكوين المطلوب",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"ليست لدي سيرة ذاتية: سأكتب معلوماتي هنا",noCvP:"لا مشكل. اكتب ما تعرفه وسنبني لك السيرة الذاتية. عنصر في كل سطر مع التواريخ. كل الحقول اختيارية.",nPhone:"الهاتف / واتساب",nPhonePh:"+212 6...",nBirth:"تاريخ الازدياد",nBirthPh:"JJ/MM/AAAA",nAddr:"العنوان الكامل",nAddrPh:"الشارع، الرمز البريدي، المدينة، البلد",nEdu:"الدراسة والشهادات (باك، جامعة…)",nEduPh:"2018 - 2019 | باكالوريا | ثانوية X، سطات\n2019 - 2023 | إجازة في الاقتصاد | جامعة Y، سطات",nCourse:"دورات اللغة (الألمانية…)",nCoursePh:"09.2023 - 05.2024 | دورة مكثفة في الألمانية | مركز Z، سطات",nExp:"التجارب والتداريب",nExpPh:"2022 - 2023 | نادل | مقهى X، الرباط",nCert:"الشواهد والامتحانات",nCertPh:"telc Deutsch B1 | تاريخ الامتحان: 14.03.2025",nLang:"اللغات والمستويات",nLangPh:"العربية: لغة أم، الفرنسية: B1، الإنجليزية: A2",nPerm:"رخصة السياقة",nPermPh:"مثال: B (أو لا يوجد)",nSkills:"المهارات",nSkillsPh:"العمل الجماعي، الدقة، Excel…",nHob:"الاهتمامات",nHobPh:"رياضة، سفر، قراءة…",nWhy:"لماذا هذه المهنة / هذا التكوين؟",nWhyPh:"بضع كلمات: دافعك ومشروعك في ألمانيا",nFiles:"الشواهد والدبلومات ورخصة السياقة والوثائق (PDF أو صورة)",nFilesH:"اختياري. يمكنك إرسالها مع الرسالة في الخطوة التالية.",
 shareF:"إرسال وثائقي عبر واتساب",reassure:"<span>✓ رد سريع</span><span>✓ جاهز في 24-48 ساعة</span><span>✓ تعديلات مجانية</span>",fFirst:"الاسم الشخصي",fLast:"الاسم العائلي",fDe:"مستواك في الألمانية",fCity:"المدينة",fMail:"البريد الإلكتروني",fType:"أبحث عن",fJob:"المهنة المطلوبة بالتحديد",choose:"اختر…",notYet:"لم أبدأ بعد",
@@ -560,7 +598,7 @@ function buildMessage(){
   var BAR=new Array(25).join("=");
   var L=["```\u{1F1E9}\u{1F1EA} DOSSIER BEWERBUNG \u{1F1E9}\u{1F1EA}",BAR+"```","",
     "\u{1F464} CANDIDAT(E) :","",
-    "Prénom : "+v("f_first"),"Nom : "+v("f_last"),"Ville : "+v("f_city"),"E-mail : "+v("f_mail"),
+    "Nom complet : "+v("f_first"),
     "Niveau d'allemand : "+v("f_de"),"",
     "\u{1F3AF} OBJECTIF :","",
     "Je cherche : "+(t?t.value:""),
@@ -616,15 +654,23 @@ $("lang").addEventListener("click",function(){lang=lang==="ar"?"fr":"ar"; try{lo
 function mark(el,bad){ if(el) el.classList.toggle("bad",!!bad); }
 $("order").addEventListener("submit",function(e){
   e.preventDefault();
-  var checks=[["f_first",v("f_first")],["f_last",v("f_last")],["f_de",v("f_de")],["f_city",v("f_city")],["f_mail",v("f_mail").indexOf("@")>0],["f_job",v("f_job")]];
+  var need=document.querySelector('input[name=f_need]:checked');
+  document.querySelectorAll(".needs .need").forEach(function(o){mark(o,!need)});
+  if(!need){ $("err").textContent=T[lang].errNeed; try{document.querySelector('input[name=f_need]').focus()}catch(x){} return; }
+  if(need.value!=="dossier"){ return; }
+  var checks=[["f_first",v("f_first")],["f_de",v("f_de")],["f_job",v("f_job")]];
   var firstBad=null;
   checks.forEach(function(c){ var bad=!c[1]; mark($(c[0]),bad); if(bad&&!firstBad) firstBad=$(c[0]); });
   var typ=document.querySelector('input[name=f_type]:checked');
   document.querySelectorAll(".opts .opt").forEach(function(o){mark(o,!typ)});
   if(!typ&&!firstBad) firstBad=document.querySelector('input[name=f_type]');
   if(firstBad){ $("err").textContent=T[lang].errReq; try{firstBad.focus()}catch(x){} return; }
+  mark($("agreeLbl"),!$("f_agree").checked);
+  if(!$("f_agree").checked){ $("err").textContent=T[lang].errAgree; try{$("f_agree").focus()}catch(x){} return; }
   $("err").textContent="";
-  pixelOnce("Lead",{content_name:v("f_job")}); pixelOnce("Contact",{content_name:"form"});
+  var low=/A1|Pas encore/.test(v("f_de"));
+  if(low){ pixelOnce("LeadLowLevel",{content_name:"dossier_"+(typ?typ.value:"")},true); }
+  else { pixelOnce("Lead",{content_name:"dossier_"+(typ?typ.value:""),value:Number(PRICE),currency:"MAD"}); }
   var msg=buildMessage(), href=waHref(msg);
   $("prevMsg").textContent=msg; $("waLink").href=href;
   $("order").style.display="none"; $("done").classList.add("on");
@@ -645,17 +691,24 @@ $("copyMsg").addEventListener("click",function(){
 });
 document.querySelectorAll("input[name=f_type]").forEach(function(r){r.addEventListener("change",updJob)});
 $("f_nocv").addEventListener("change",function(){$("nocvBox").hidden=!this.checked});
-/* Meta Pixel: one Lead (+ one Contact) per visitor per 24 h, whatever the source (form or WhatsApp click) */
+$("f_de").addEventListener("change",function(){$("lvlNote").hidden=!/A1|Pas encore/.test(this.value)});
+$("f_agree").addEventListener("change",function(){$("agreeLbl").classList.remove("bad")});
+document.querySelectorAll("input[name=f_need]").forEach(function(r){r.addEventListener("change",function(){
+  var no=this.value!=="dossier"; $("noFit").hidden=!no; $("qBody").hidden=no; $("send").hidden=no; $("err").textContent="";
+  document.querySelectorAll(".needs .need").forEach(function(o){o.classList.remove("bad")});
+  if(no){ try{ if(window.fbq) fbq("trackCustom","NotQualified",{reason:this.value}); }catch(x){} }
+})});
+/* Meta Pixel: Lead = qualified form only (wants the 199 DH dossier). WhatsApp clicks = Contact only. Once per visitor per 24 h. */
 var _sent={};
-function pixelOnce(ev,params){
+function pixelOnce(ev,params,custom){
   if(_sent[ev]) return; _sent[ev]=1;
   try{ var k="procv-"+ev, t=+localStorage.getItem(k)||0; if(Date.now()-t<864e5) return; localStorage.setItem(k,String(Date.now())); }catch(x){}
-  try{ if(window.fbq) fbq("track",ev,params); }catch(x){}
+  try{ if(window.fbq) fbq(custom?"trackCustom":"track",ev,params); }catch(x){}
 }
 document.addEventListener("click",function(e){
   var a=e.target.closest&&e.target.closest("a[href*='wa.me'],a.wa");
   if(!a) return;
-  pixelOnce("Lead",{content_name:"whatsapp_click"});
+  if(a.id==="waLink") return;
   pixelOnce("Contact",{content_name:"whatsapp_click"});
 },true);
 (function(){
@@ -664,7 +717,8 @@ document.addEventListener("click",function(e){
     new IntersectionObserver(function(en){ fl.classList.toggle("off",en[0].isIntersecting); },{threshold:0}).observe(box);
   }
   function ready(){
-    var ok=["f_first","f_last","f_de","f_city","f_job"].every(function(i){return v(i)})&&v("f_mail").indexOf("@")>0&&!!document.querySelector("input[name=f_type]:checked");
+    var nd=document.querySelector("input[name=f_need]:checked");
+    var ok=!!nd&&nd.value==="dossier"&&$("f_agree").checked&&["f_first","f_de","f_job"].every(function(i){return v(i)})&&!!document.querySelector("input[name=f_type]:checked");
     $("send").classList.toggle("ready",ok);
   }
   document.querySelectorAll(".leadform input,.leadform select").forEach(function(el){el.addEventListener("input",ready);el.addEventListener("change",ready)});
