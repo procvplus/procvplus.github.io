@@ -611,24 +611,33 @@ function cookie(n){var m=document.cookie.match(new RegExp("(?:^|; )"+n+"=([^;]*)
 function fbcVal(){var c=cookie("_fbc"); if(c) return c; var m=location.search.match(/[?&]fbclid=([^&]+)/); return m?"fb.1."+Date.now()+"."+decodeURIComponent(m[1]):""}
 function phoneOk(p){return p.replace(/\D/g,"").length>=9}
 function buildMessage(){
-  var need=needVal();
+  var need=needVal(), BAR="========================";
+  var FLAG="\u{1F1E9}\u{1F1EA}", U="\u{1F464}", G="\u{1F3AF}", M="\u{1F4B0}", C="\u{1F4CE}";
   if(lang==="ar"){
-    return ["السلام عليكم،","",
-      "أرغب في طلب ملف الترشيح باللغة الألمانية بثمن 199 درهم.","",
+    return ["السلام عليكم، أرغب في طلب ملف الترشيح باللغة الألمانية.","",
+      "```"+FLAG+" DOSSIER BEWERBUNG "+FLAG,BAR+"```","",
+      U+" *المترشح*",
       "الاسم الكامل: "+v("f_first"),
-      "نوع الترشيح: "+need,
-      "المجال المطلوب: "+v("f_job"),
       "رقم الهاتف: "+v("f_phone"),"",
-      "سأرسل لكم صورتي الشخصية وسيرتي الذاتية (أو معلوماتي) في هذه المحادثة.","",
+      G+" *الهدف*",
+      "نوع الترشيح: "+need,
+      "المجال المطلوب: "+v("f_job"),"",
+      M+" *العرض*",
+      "الملف الكامل: 199 درهم","",
+      C+" سأرسل لكم صورتي الشخصية وسيرتي الذاتية (أو معلوماتي) في هذه المحادثة.","",
       "شكراً."].join("\n");
   }
-  return ["Bonjour,","",
-    "Je souhaite commander mon dossier de candidature en allemand au tarif de 199\u00A0DH.","",
+  return ["```"+FLAG+" DOSSIER BEWERBUNG "+FLAG,BAR+"```","",
+    "Bonjour, je souhaite commander mon dossier de candidature en allemand.","",
+    U+" *CANDIDAT(E)*",
     "Nom complet : "+v("f_first"),
+    "Téléphone : "+v("f_phone"),"",
+    G+" *OBJECTIF*",
     "Type de candidature : "+need,
-    "Domaine vis\u00E9 : "+v("f_job"),
-    "T\u00E9l\u00E9phone : "+v("f_phone"),"",
-    "Je vous transmets ma photo et mon CV (ou mes informations) dans cette conversation.","",
+    "Domaine visé : "+v("f_job"),"",
+    M+" *OFFRE*",
+    "Dossier complet : 199 DH","",
+    C+" Je vous transmets ma photo et mon CV (ou mes informations) dans cette conversation.","",
     "Merci."].join("\n");
 }
 function apply(){
