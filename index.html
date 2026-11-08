@@ -601,7 +601,7 @@ var lang = "ar";
 try{ var sv = localStorage.getItem("procv-lang"); if(sv==="ar"||sv==="fr") lang = sv; }catch(e){}
 function $(id){return document.getElementById(id)}
 function v(id){return ($(id).value||"").trim()}
-function waHref(text){return "https://wa.me/"+PHONE+"?text="+encodeURIComponent(text)}
+function waHref(text){return "https://api.whatsapp.com/send?phone="+PHONE+"&text="+encodeURIComponent(text)}
 /* Google Sheet (Apps Script) qui reçoit les commandes */
 var LEAD_URL = "https://script.google.com/macros/s/AKfycbw1qseYwu1iKUJe50iYnV5lH9iS0ODyuEonf9X3_fRc3yhHj9K5GlrQsdVyGjR9c2T0mA/exec";
 function needVal(){var t=document.querySelector('input[name=f_need]:checked');return t?t.value:""}
@@ -611,8 +611,9 @@ function cookie(n){var m=document.cookie.match(new RegExp("(?:^|; )"+n+"=([^;]*)
 function fbcVal(){var c=cookie("_fbc"); if(c) return c; var m=location.search.match(/[?&]fbclid=([^&]+)/); return m?"fb.1."+Date.now()+"."+decodeURIComponent(m[1]):""}
 function phoneOk(p){return p.replace(/\D/g,"").length>=9}
 function buildMessage(){
-  var need=needVal(), BAR="========================";
-  var FLAG="\u{1F1E9}\u{1F1EA}", U="\u{1F464}", G="\u{1F3AF}", M="\u{1F4B0}", C="\u{1F4CE}";
+  var need=needVal(), BAR="\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501";
+  /* Symboles du plan Unicode de base uniquement : s'affichent sur tous les téléphones */
+  var FLAG="\u2726", U="\u25C6", G="\u25C6", M="\u25C6", C="\u2709\uFE0F";
   if(lang==="ar"){
     return ["السلام عليكم، أرغب في طلب ملف الترشيح باللغة الألمانية.","",
       "```"+FLAG+" DOSSIER BEWERBUNG "+FLAG,BAR+"```","",
@@ -724,7 +725,7 @@ function pixelOnce(ev,params,custom,opts){
   try{ if(window.fbq){ if(opts) fbq(custom?"trackCustom":"track",ev,params,opts); else fbq(custom?"trackCustom":"track",ev,params); } }catch(x){}
 }
 document.addEventListener("click",function(e){
-  var a=e.target.closest&&e.target.closest("a[href*='wa.me'],a.wa");
+  var a=e.target.closest&&e.target.closest("a[href*='wa.me'],a[href*='api.whatsapp.com'],a.wa");
   if(!a) return;
   if(a.id==="waLink") return;
   pixelOnce("Contact",{content_name:"whatsapp_click"});
