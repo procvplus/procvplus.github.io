@@ -295,12 +295,13 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
 .nofit p{margin:4px 0 0}
 #qBody{display:grid;gap:12px}
 .picks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pick{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:14px 8px;font-weight:800;cursor:pointer;line-height:1.3;transition:border-color .15s,background .15s,transform .15s}
+.pick{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:16px 8px;font-weight:800;cursor:pointer;line-height:1.3;transition:border-color .15s,background .15s,transform .15s}
 .pick input{position:absolute;opacity:0;pointer-events:none}
-.pick .pi{font-size:1.6rem}
+.pick .pt{font-size:1.05rem;font-weight:800;letter-spacing:.01em;direction:ltr}
+.pick .ps{font-size:.86rem;font-weight:600;color:var(--muted)}
 .pick:has(input:checked){border-color:var(--cta);background:color-mix(in srgb,var(--cta) 9%,var(--surface));transform:translateY(-1px)}
-.pick:has(input[value=contrat]){grid-column:1/-1;flex-direction:row;padding:10px;font-weight:700;color:var(--muted);font-size:.92rem}
-.pick:has(input[value=contrat]) .pi{font-size:1.1rem}
+.pick:has(input[value=contrat]){grid-column:1/-1;padding:10px;border-style:dashed}
+.pick:has(input[value=contrat]) .ps{font-size:.85rem}
 .pick.bad{border-color:#c0392b}
 .fit{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
 .fitc{border-radius:18px;padding:20px 22px;border:1px solid var(--line);background:var(--surface);box-shadow:0 10px 26px rgba(19,41,61,.08)}
@@ -359,13 +360,13 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
     <p class="lf-p" data-t="lfP"></p>
     <div class="fld"><span class="lb"><span data-t="fNeed2"></span></span>
       <div class="picks" role="radiogroup">
-        <label class="pick"><input type="radio" name="f_need" value="Ausbildung"><span class="pi">🎓</span><span data-t="pAus"></span></label>
-        <label class="pick"><input type="radio" name="f_need" value="Arbeit"><span class="pi">💼</span><span data-t="pArb"></span></label>
-        <label class="pick"><input type="radio" name="f_need" value="contrat"><span class="pi">📄</span><span data-t="pCon"></span></label>
+        <label class="pick"><input type="radio" name="f_need" value="Ausbildung"><span class="pt">Ausbildung</span><span class="ps" data-t="pAus"></span></label>
+        <label class="pick"><input type="radio" name="f_need" value="Arbeit"><span class="pt">Arbeit</span><span class="ps" data-t="pArb"></span></label>
+        <label class="pick"><input type="radio" name="f_need" value="contrat"><span class="ps" data-t="pCon"></span></label>
       </div></div>
     <div class="nofit" id="noFit" hidden><strong data-t="noFitH"></strong><p data-t="noFitP"></p></div>
     <div id="qBody">
-      <div class="fld"><label for="f_first"><span data-t="fFull"></span></label><input id="f_first" type="text" autocomplete="name"></div>
+      <div class="fld"><label for="f_first"><span data-t="fFull"></span></label><input id="f_first" type="text" autocomplete="name" data-t-ph="namePh"></div>
       <div class="fld"><label for="f_phone"><span data-t="fPhone"></span></label><input id="f_phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" placeholder="06 12 34 56 78"></div>
     </div>
     <div class="err" id="err" role="alert"></div>
@@ -493,13 +494,13 @@ fr:{navCta:"Commander",cta1:"Remplir le formulaire",cta2:"Écrire sur WhatsApp",
 h1:"L'entreprise allemande voit votre dossier <em>avant de vous voir</em>",
 lead:"Faites bonne impression dès le premier regard. Nous préparons votre Lebenslauf, votre Motivationsschreiben et votre Deckblatt en allemand, rédigés pour l'Ausbildung ou le poste que vous visez, et prêts en 24 à 48 h.",
 tick1:"Prêt en 24 à 48 h",tick2:"Conforme DIN 5008 et ATS",tick3:"Suivi direct sur WhatsApp",phLbl:"Dossier complet",phNum:PRICE,phCur:"DH",phT1:"3 documents en allemand, un seul prix",phT2:"Page de garde + lettre de motivation + CV",
-lfH:"Commandez votre dossier",lfP:"20 secondes, puis on continue ensemble sur WhatsApp.",fNeed2:"Vous cherchez :",pAus:"Une Ausbildung",pArb:"Un emploi (Arbeit)",pCon:"Un contrat de travail ou un visa",fPhone:"Votre numéro WhatsApp",fNeed:"De quoi avez-vous besoin ?",needDeja:"J'ai déjà mon dossier, je cherche un contrat ou une entreprise",agree:"👌 C'est noté : 199 DH le dossier complet",errAgree:"Un petit clic sur 👌 et c'est parti.",lvlNote:"Bon à savoir : la plupart des entreprises demandent au moins le niveau B1 pour une Ausbildung. Votre dossier peut tout de même être préparé.",ctaHow:"Comment ça marche ?",fitH:"Ce service est-il <em>fait pour vous</em> ?",fitP:"Pour ne faire perdre de temps à personne, voici exactement ce que nous faisons, et ce que nous ne faisons pas.",fitYesH:"Fait pour vous si…",fy1:"Vous visez une Ausbildung ou un emploi en Allemagne",fy2:"Il vous faut un dossier complet en allemand : CV, lettre et page de garde",fy3:"Vous voulez un dossier rédigé pour vous, pas un modèle copié",fy4:"Vous voulez un dossier prêt en 24 à 48 h",fitNoH:"Pas pour vous si…",fn1:"Vous cherchez un contrat de travail ou une promesse d'embauche",fn2:"Vous cherchez un visa ou quelqu'un qui fait les démarches à votre place",fn3:"Vous avez déjà un dossier complet en allemand",fitCta:"C'est pour moi : je commence",q0:"Vous trouvez-vous un contrat ou un visa ?",a0:"Non. Nous préparons uniquement votre dossier de candidature en allemand. C'est vous qui postulez auprès des entreprises. Méfiez-vous de quiconque vend des contrats de travail.",needDossier:"Je veux qu'on me prépare mon dossier (CV + lettre de motivation + page de garde) pour 199 DH",needContrat:"Je cherche un contrat de travail, un visa ou quelqu'un qui me trouve un emploi",noFitH:"Nous ne proposons pas de contrats de travail ni de visas.",noFitP:"Notre service : préparer votre dossier de candidature en allemand (199 DH), que vous envoyez ensuite vous-même aux entreprises. Si c'est ce qu'il vous faut, choisissez la première option.",fFull:"Votre nom",notice:"⚠️ Nous ne vendons ni contrats de travail ni visas : uniquement la préparation de votre dossier de candidature en allemand.",errNeed:"Choisissez d'abord ce dont vous avez besoin.",
+lfH:"Demande de dossier de candidature",lfP:"Renseignez vos coordonnées : nous vous contactons directement sur WhatsApp pour compléter votre dossier.",fNeed2:"Type de candidature",pAus:"Formation professionnelle",pArb:"Emploi",pCon:"Je cherche un contrat de travail ou un visa",fPhone:"Numéro de téléphone (WhatsApp)",fNeed:"De quoi avez-vous besoin ?",needDeja:"J'ai déjà mon dossier, je cherche un contrat ou une entreprise",agree:"👌 C'est noté : 199 DH le dossier complet",errAgree:"Un petit clic sur 👌 et c'est parti.",lvlNote:"Bon à savoir : la plupart des entreprises demandent au moins le niveau B1 pour une Ausbildung. Votre dossier peut tout de même être préparé.",ctaHow:"Comment ça marche ?",fitH:"Ce service est-il <em>fait pour vous</em> ?",fitP:"Pour ne faire perdre de temps à personne, voici exactement ce que nous faisons, et ce que nous ne faisons pas.",fitYesH:"Fait pour vous si…",fy1:"Vous visez une Ausbildung ou un emploi en Allemagne",fy2:"Il vous faut un dossier complet en allemand : CV, lettre et page de garde",fy3:"Vous voulez un dossier rédigé pour vous, pas un modèle copié",fy4:"Vous voulez un dossier prêt en 24 à 48 h",fitNoH:"Pas pour vous si…",fn1:"Vous cherchez un contrat de travail ou une promesse d'embauche",fn2:"Vous cherchez un visa ou quelqu'un qui fait les démarches à votre place",fn3:"Vous avez déjà un dossier complet en allemand",fitCta:"C'est pour moi : je commence",q0:"Vous trouvez-vous un contrat ou un visa ?",a0:"Non. Nous préparons uniquement votre dossier de candidature en allemand. C'est vous qui postulez auprès des entreprises. Méfiez-vous de quiconque vend des contrats de travail.",needDossier:"Je veux qu'on me prépare mon dossier (CV + lettre de motivation + page de garde) pour 199 DH",needContrat:"Je cherche un contrat de travail, un visa ou quelqu'un qui me trouve un emploi",noFitH:"Nous ne proposons pas de contrats de travail ni de visas.",noFitP:"Notre service : préparer votre dossier de candidature en allemand (199 DH), que vous envoyez ensuite vous-même aux entreprises. Si c'est ce qu'il vous faut, choisissez la première option.",fFull:"Nom complet",namePh:"Prénom et nom",notice:"⚠️ Nous ne vendons ni contrats de travail ni visas : uniquement la préparation de votre dossier de candidature en allemand.",errNeed:"Veuillez d'abord choisir le type de candidature.",
 optAus:"Ausbildung (formation)",optJob:"Emploi",jobPosteLbl:"Poste visé",jobFormLbl:"Formation visée",jobPosteLbl2:"",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"Je n'ai pas de CV : je remplis mes informations ici",noCvP:"Pas de souci. Indiquez ce que vous savez, nous construisons le CV pour vous. Un élément par ligne, avec les dates. Tout est facultatif.",nPhone:"Téléphone / WhatsApp",nPhonePh:"+212 6...",nBirth:"Date de naissance",nBirthPh:"JJ/MM/AAAA",nAddr:"Adresse complète",nAddrPh:"Rue, code postal, ville, pays",nEdu:"Études et diplômes (bac, université…)",nEduPh:"2018 - 2019 | Baccalauréat | Lycée X, Settat\n2019 - 2023 | Licence en économie | Université Y, Settat",nCourse:"Cours de langue (allemand…)",nCoursePh:"09.2023 - 05.2024 | Cours intensif d'allemand | Centre Z, Settat",nExp:"Expériences et stages",nExpPh:"2022 - 2023 | Serveur | Café X, Rabat",nCert:"Certificats et examens",nCertPh:"telc Deutsch B1 | date de l'examen : 14.03.2025",nLang:"Langues et niveaux",nLangPh:"Arabe : langue maternelle, Français : B1, Anglais : A2",nPerm:"Permis de conduire",nPermPh:"Ex : B (ou aucun)",nSkills:"Compétences",nSkillsPh:"Travail en équipe, rigueur, Excel…",nHob:"Centres d'intérêt",nHobPh:"Sport, voyages, lecture…",nWhy:"Pourquoi ce métier / cette formation ?",nWhyPh:"Quelques mots : votre motivation, votre projet en Allemagne",nFiles:"Certificats, diplômes, permis, attestations (PDF ou photo)",nFilesH:"Facultatif. Vous pourrez les envoyer avec le message à l'étape suivante.",
 shareF:"Envoyer mes documents sur WhatsApp",reassure:"<span>✓ Réponse rapide</span><span>✓ Prêt en 24-48&nbsp;h</span><span>✓ Retouches gratuites</span>",fFirst:"Prénom",fLast:"Nom",fDe:"Niveau d'allemand",fCity:"Ville",fMail:"E-mail",fType:"Je cherche",fJob:"Métier exact visé",choose:"Choisir…",notYet:"Pas encore commencé",
 send:"Commander mon dossier – 199 DH",send2:"Ouvrir WhatsApp",copy:"Copier le message",lfS:"Vos informations ne partent qu'au moment où vous envoyez le message sur WhatsApp.",
 errReq:"Un champ est vide ou incorrect : il est entouré en rouge.",copied:"Copié",
-doneH:"Votre message est prêt",doneP:"WhatsApp s'ouvre avec votre message : envoyez-le. Ensuite, envoyez dans la même conversation votre photo et votre ancien CV ou vos diplômes si vous en avez. S'il ne s'ouvre pas, appuyez sur le bouton ci-dessous.",
+doneH:"Votre demande est enregistrée",doneP:"WhatsApp s'ouvre avec votre message : envoyez-le. Ensuite, envoyez dans la même conversation votre photo et votre ancien CV ou vos diplômes si vous en avez. S'il ne s'ouvre pas, appuyez sur le bouton ci-dessous.",
 atsH:"Un système de tri (ATS) lit votre CV <em>avant</em> le recruteur",
 atsP:"Beaucoup d'entreprises allemandes reçoivent les candidatures par un portail équipé d'un système de tri automatique (ATS). Il classe les dossiers avant qu'une personne les ouvre.",
 c1a:"CV pris en photo ou scanné",c1b:"Le système ne trouve aucun texte à lire.",
@@ -531,23 +532,23 @@ floatCta:"Commander mon dossier",
 disc:"ProCv+ rédige des dossiers de candidature en allemand. Nous ne vendons pas d'emplois et ne fournissons ni contrat de travail, ni visa, ni place d'Ausbildung. La décision appartient à l'entreprise ou à l'établissement.",
 wa:"Bonjour, je souhaite commander mon dossier de candidature en allemand. Mon métier visé : ",waq:"Bonjour, j'ai une question : "},
 ar:{navCta:"اطلب ملفك",cta1:"املأ الاستمارة",cta2:"تواصل عبر واتساب",kicker:"🇩🇪 Ausbildung · Arbeit · ملفات بالألمانية",
-h1:"الشركة الألمانية كتشوف الملف ديالك <em>قبل ما تشوفك</em>",
-lead:"خليها تاخد عليك فكرة مزيانة من الأول. كنوجدو ليك Lebenslauf و Motivationsschreiben و Deckblatt بالألمانية، مكتوبين خصيصاً للأوسبيلدونغ ولا الخدمة اللي باغي، وجاهزين خلال 24 حتى 48 ساعة.",
+h1:"الشركة الألمانية ترى ملفك <em>قبل أن تراك</em>",
+lead:"اترك انطباعاً قوياً من النظرة الأولى. نُعدّ لك Lebenslauf و Motivationsschreiben و Deckblatt باللغة الألمانية، مكتوبة خصيصاً للتكوين المهني أو الوظيفة التي تستهدفها، وجاهزة خلال 24 إلى 48 ساعة.",
 tick1:"جاهز خلال 24 إلى 48 ساعة",tick2:"وفق معيار DIN 5008 وأنظمة ATS",tick3:"متابعة مباشرة عبر واتساب",phLbl:"الملف الكامل",phNum:PRICE,phCur:"درهم",phT1:"3 وثائق بالألمانية بثمن واحد",phT2:"صفحة الغلاف + رسالة التحفيز + الـ CV",
-lfH:"اطلب الملف ديالك",lfP:"20 ثانية، ومن بعد نكملو معاك فالواتساب.",fNeed2:"شنو كتقلب عليه؟",pAus:"تكوين مهني · Ausbildung",pArb:"خدمة · Arbeit",pCon:"عقد عمل ولا فيزا",fPhone:"نمرة الواتساب ديالك",fNeed:"شنو كتحتاج بالضبط؟",needDeja:"عندي الملف ديجا، كنقلب على عقد ولا شركة",agree:"👌 تمام، الملف كامل بـ 199 درهم",errAgree:"كليكي على 👌 وزيد.",lvlNote:"معلومة: أغلب الشركات كتطلب على الأقل مستوى B1 للأوسبيلدونغ. ولكن نقدرو نوجدو ليك الملف عادي.",ctaHow:"كيفاش كنخدمو؟",fitH:"واش هاد الخدمة <em>ليك</em>؟",fitP:"باش ما نضيعو الوقت لحتى واحد، هادشي اللي كنديرو بالضبط، وهادشي اللي ما كنديروش.",fitYesH:"ليك إلا…",fy1:"باغي دير Ausbildung ولا تخدم فألمانيا",fy2:"محتاج ملف ترشيح كامل بالألمانية: CV، رسالة التحفيز وصفحة الغلاف",fy3:"باغي ملف مكتوب خصيصاً ليك، ماشي نموذج منقول",fy4:"باغي الملف واجد خلال 24 حتى 48 ساعة",fitNoH:"ماشي ليك إلا…",fn1:"كتقلب على عقد عمل ولا وعد بالخدمة",fn2:"كتقلب على فيزا ولا شي واحد يدير ليك الإجراءات",fn3:"عندك ديجا ملف كامل بالألمانية",fitCta:"هادشي اللي محتاج، نبدا دابا",q0:"واش كتلقاو ليا عقد عمل ولا فيزا؟",a0:"لا. كنوجدو غير ملف الترشيح بالألمانية، ونتا اللي كتصيفطو للشركات. رد البال من أي واحد كيبيع عقود الخدمة.",needDossier:"باغي توجدو ليا الملف ديالي (CV + رسالة التحفيز + صفحة الغلاف) بـ 199 درهم",needContrat:"كنقلب على عقد عمل، فيزا، ولا شي واحد يلقى ليا خدمة",noFitH:"حنا ما كنعطيوش عقود عمل ولا فيزا.",noFitP:"الخدمة ديالنا هي نوجدو ليك ملف الترشيح بالألمانية بـ 199 درهم، ونتا اللي كتصيفطو للشركات. إلا هادشي اللي محتاج، ختار الاختيار الأول.",fFull:"سميتك",notice:"⚠️ ما كنبيعوش عقود عمل ولا فيزا: غير كنوجدو ملف الترشيح ديالك بالألمانية.",errNeed:"ختار الأول شنو كتحتاج.",
+lfH:"طلب ملف الترشيح",lfP:"أدخل معلوماتك، وسنتواصل معك مباشرة عبر واتساب لاستكمال ملفك.",fNeed2:"نوع الترشيح",pAus:"التكوين المهني",pArb:"العمل",pCon:"أبحث عن عقد عمل أو تأشيرة",fPhone:"رقم الهاتف (واتساب)",fNeed:"شنو كتحتاج بالضبط؟",needDeja:"عندي الملف ديجا، كنقلب على عقد ولا شركة",agree:"👌 تمام، الملف كامل بـ 199 درهم",errAgree:"كليكي على 👌 وزيد.",lvlNote:"معلومة: أغلب الشركات كتطلب على الأقل مستوى B1 للأوسبيلدونغ. ولكن نقدرو نوجدو ليك الملف عادي.",ctaHow:"كيف نعمل؟",fitH:"هل هذه الخدمة <em>مناسبة لك</em>؟",fitP:"حرصاً على وقتك، إليك بوضوح ما نقدّمه وما لا نقدّمه.",fitYesH:"مناسبة لك إذا…",fy1:"كنت تستهدف Ausbildung أو وظيفة في ألمانيا",fy2:"كنت تحتاج ملف ترشيح كاملاً بالألمانية: السيرة الذاتية ورسالة التحفيز وصفحة الغلاف",fy3:"كنت تريد ملفاً مكتوباً خصيصاً لك، لا نموذجاً منسوخاً",fy4:"كنت تريد ملفك جاهزاً خلال 24 إلى 48 ساعة",fitNoH:"غير مناسبة لك إذا…",fn1:"كنت تبحث عن عقد عمل أو وعد بالتوظيف",fn2:"كنت تبحث عن تأشيرة أو عمّن يتولى الإجراءات بدلاً منك",fn3:"كان لديك ملف كامل بالألمانية مسبقاً",fitCta:"هذا ما أحتاجه، أطلب ملفي",q0:"هل توفرون عقود عمل أو تأشيرات؟",a0:"لا. نُعدّ ملف الترشيح باللغة الألمانية فقط، وأنت من يرسله إلى الشركات. احذر ممن يبيع عقود العمل.",needDossier:"باغي توجدو ليا الملف ديالي (CV + رسالة التحفيز + صفحة الغلاف) بـ 199 درهم",needContrat:"كنقلب على عقد عمل، فيزا، ولا شي واحد يلقى ليا خدمة",noFitH:"لا نقدّم عقود عمل ولا تأشيرات.",noFitP:"خدمتنا هي إعداد ملف الترشيح باللغة الألمانية مقابل 199 درهماً، وأنت من يرسله إلى الشركات. إذا كان هذا ما تحتاجه، اختر التكوين المهني أو العمل.",fFull:"الاسم الكامل",namePh:"الاسم والنسب",notice:"⚠️ لا نبيع عقود عمل ولا تأشيرات؛ نُعدّ فقط ملف ترشيحك باللغة الألمانية.",errNeed:"يرجى اختيار نوع الترشيح أولاً.",
 optAus:"Ausbildung (تكوين مهني)",optJob:"عمل",jobPosteLbl:"المنصب المطلوب",jobFormLbl:"التكوين المطلوب",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"ليست لدي سيرة ذاتية: سأكتب معلوماتي هنا",noCvP:"لا مشكل. اكتب ما تعرفه وسنبني لك السيرة الذاتية. عنصر في كل سطر مع التواريخ. كل الحقول اختيارية.",nPhone:"الهاتف / واتساب",nPhonePh:"+212 6...",nBirth:"تاريخ الازدياد",nBirthPh:"JJ/MM/AAAA",nAddr:"العنوان الكامل",nAddrPh:"الشارع، الرمز البريدي، المدينة، البلد",nEdu:"الدراسة والشهادات (باك، جامعة…)",nEduPh:"2018 - 2019 | باكالوريا | ثانوية X، سطات\n2019 - 2023 | إجازة في الاقتصاد | جامعة Y، سطات",nCourse:"دورات اللغة (الألمانية…)",nCoursePh:"09.2023 - 05.2024 | دورة مكثفة في الألمانية | مركز Z، سطات",nExp:"التجارب والتداريب",nExpPh:"2022 - 2023 | نادل | مقهى X، الرباط",nCert:"الشواهد والامتحانات",nCertPh:"telc Deutsch B1 | تاريخ الامتحان: 14.03.2025",nLang:"اللغات والمستويات",nLangPh:"العربية: لغة أم، الفرنسية: B1، الإنجليزية: A2",nPerm:"رخصة السياقة",nPermPh:"مثال: B (أو لا يوجد)",nSkills:"المهارات",nSkillsPh:"العمل الجماعي، الدقة، Excel…",nHob:"الاهتمامات",nHobPh:"رياضة، سفر، قراءة…",nWhy:"لماذا هذه المهنة / هذا التكوين؟",nWhyPh:"بضع كلمات: دافعك ومشروعك في ألمانيا",nFiles:"الشواهد والدبلومات ورخصة السياقة والوثائق (PDF أو صورة)",nFilesH:"اختياري. يمكنك إرسالها مع الرسالة في الخطوة التالية.",
 shareF:"إرسال وثائقي عبر واتساب",reassure:"<span>✓ رد سريع</span><span>✓ جاهز في 24-48 ساعة</span><span>✓ تعديلات مجانية</span>",fFirst:"الاسم الشخصي",fLast:"الاسم العائلي",fDe:"مستواك في الألمانية",fCity:"المدينة",fMail:"البريد الإلكتروني",fType:"أبحث عن",fJob:"المهنة المطلوبة بالتحديد",choose:"اختر…",notYet:"لم أبدأ بعد",
 send:"اطلب ملفك – 199 درهم",send2:"فتح واتساب",copy:"نسخ الرسالة",lfS:"لا تُرسل معلوماتك إلا عندما تبعث الرسالة على واتساب.",
 errReq:"هناك خانة فارغة أو غير صحيحة، وهي محاطة باللون الأحمر.",copied:"تم النسخ",
-doneH:"رسالتك جاهزة",doneP:"واتساب غادي يتحل بالرسالة ديالك: صيفطها. ومن بعد صيفط فنفس المحادثة تصويرتك، والـ CV القديم ولا الديبلومات ديالك إلا عندك. إلا ما تحلش، كليكي على البوطونة التحت.",
+doneH:"تم تسجيل طلبك",doneP:"سيُفتح واتساب برسالتك، يرجى إرسالها. بعد ذلك أرسل في نفس المحادثة صورتك الشخصية، وسيرتك الذاتية الحالية أو شهاداتك إن وُجدت. إذا لم يُفتح واتساب، اضغط على الزر أدناه.",
 atsH:"نظام الفرز الآلي (ATS) يقرأ ملفك <em>قبل</em> المسؤول",
 atsP:"تستقبل شركات ألمانية كثيرة الطلبات عبر بوابة إلكترونية مزوّدة بنظام فرز آلي (ATS) يصنّف الملفات قبل أن يفتحها أي شخص.",
 c1a:"ملف مصوَّر بالهاتف أو ممسوح ضوئياً",c1b:"لا يجد النظام أي نص ليقرأه.",
 c2a:"أقسام لا تعتمد العناوين الألمانية",c2b:"يبحث النظام عن عناوين مثل Berufserfahrung وAusbildung وSprachen.",
 c3a:"تواريخ ناقصة أو غير واضحة",c3b:"لكل تجربة شهر وسنة: 01.2020 – 12.2025.",
 c4a:"ملف ProCv+",c4b:"ملف PDF بنص قابل للقراءة، وعناوين ألمانية، ومصطلحات مهنتك، ومستويات اللغة من A1 إلى C2.",
-getH:"ثلاث وثائق في <em>ملف واحد</em>",getP:"تصميم موحّد في جميع الصفحات، ومكتوب خصيصاً للأوسبيلدونغ ولا الخدمة اللي باغي.",
+getH:"ثلاث وثائق في <em>ملف واحد</em>",getP:"تصميم موحّد في جميع الصفحات، ومكتوب خصيصاً للتكوين المهني أو الوظيفة التي تستهدفها.",
 g1h:"صفحة الغلاف",g1p:"اسمك والوظيفة المطلوبة وصورتك وقائمة المرفقات.",
 g2h:"رسالة التحفيز",g2p:"نص بألمانية مهنية، منسّق وفق معيار DIN 5008.",
 g3h:"الـ CV (Lebenslauf)",g3p:"المسار المهني والمؤهلات واللغات ورخصة السياقة، بالترتيب المعتمد في ألمانيا.",
@@ -555,7 +556,7 @@ sm1:"صفحة الغلاف",sm2:"رسالة التحفيز",sm3:"الـ CV",sm4:
 exH:"نماذج من <em>ملفات أنجزناها</em>",exP:"ملفات حقيقية لزبنائنا، مع إخفاء الوجوه والمعلومات الشخصية. اضغط على الصورة لتكبيرها.",prH:"مراسلات مع زبنائنا",revH:"ماذا يقول <em>زبناؤنا</em>",revP:"تعليقات حقيقية من صفحتنا على Instagram.",
 stepsH:"كيف <em>نعمل</em>؟",
 s1h:"املأ الاستمارة",s1p:"بضع خانات فقط، ثم يُفتح واتساب برسالتك الجاهزة، ونستكمل معك بقية المعلومات.",
-s2h:"نُعدّ ملفك",s2p:"كنكتبوه بالألمانية خصيصاً للأوسبيلدونغ ولا الخدمة اللي باغي، وكنصمموه.",
+s2h:"نُعدّ ملفك",s2p:"نكتبه بالألمانية خصيصاً للتكوين المهني أو الوظيفة التي تستهدفها، ثم نصمّمه.",
 s3h:"تستلم ملف PDF",s3p:"جاهز للإرسال إلى الشركة خلال 24 إلى 48 ساعة.",
 s4h:"الدفع",s4p:"نتفق معك على طريقة الأداء عبر واتساب.",
 priceH:"ثمن واحد، <em>ملف كامل</em>",priceP:"صفحة الغلاف ورسالة التحفيز والـ CV بالألمانية، جاهزة خلال 24 إلى 48 ساعة.",priceUnit:"درهم",
@@ -565,9 +566,9 @@ q1:"هل يحترم ملفكم معيار ATS ومعيار DIN 5008؟",a1:"نع�
 q2:"كم يستغرق إعداد الملف؟",a2:"يكون الملف جاهزاً خلال 24 إلى 48 ساعة بعد توصلنا بمعلوماتك.",
 q3:"كم الثمن؟",a3:"الملف الكامل (صفحة الغلاف ورسالة التحفيز والـ CV) بـ "+PRICE+" درهماً. نتفق معك على طريقة الأداء عبر واتساب.",
 q4:"هل يصلح للتكوين المهني (Ausbildung)؟",a4:"نعم، نُعدّ ملفات للعمل (Arbeit) وللتكوين المهني (Ausbildung).",
-q5:"هل تكتبون الملف حسب مهنتي؟",a5:"نعم. النص والمصطلحات كيتبدلو على حساب الأوسبيلدونغ ولا الخدمة اللي باغي: سائق، ميكاترونيك، كهربائي، تجارة، تمريض وغيرها.",
+q5:"هل تكتبون الملف حسب مهنتي؟",a5:"نعم. يتغيّر النص والمصطلحات حسب التكوين أو الوظيفة المستهدفة: سائق، ميكاترونيك، كهربائي، تجارة، تمريض وغيرها.",
 askMore:"اسأل عبر واتساب",
-finH:"هل أنت مستعد لطلب ملفك؟",finP:"دقيقة وحدة تعمر فيها الاستمارة، والملف ديالك كيبدا يتوجد.",orNum:"أو اتصل بنا على",
+finH:"هل أنت مستعد لطلب ملفك؟",finP:"دقيقة واحدة لملء الاستمارة، ونبدأ في إعداد ملفك.",orNum:"أو اتصل بنا على",
 floatCta:"اطلب ملفك الآن",
 disc:"ProCv+ تُعدّ ملفات الترشيح باللغة الألمانية. لا نبيع فرص العمل، ولا نوفّر عقود عمل أو تأشيرات أو مقاعد في التكوين المهني، والقرار يعود إلى الشركة أو المؤسسة.",
 wa:"السلام عليكم، أريد طلب ملف الترشيح بالألمانية. المهنة المطلوبة: ",waq:"السلام عليكم، لدي سؤال: "}
@@ -587,14 +588,17 @@ function cookie(n){var m=document.cookie.match(new RegExp("(?:^|; )"+n+"=([^;]*)
 function fbcVal(){var c=cookie("_fbc"); if(c) return c; var m=location.search.match(/[?&]fbclid=([^&]+)/); return m?"fb.1."+Date.now()+"."+decodeURIComponent(m[1]):""}
 function phoneOk(p){return p.replace(/\D/g,"").length>=9}
 function buildMessage(){
-  var L=["Bonjour \u{1F44B} Je souhaite commander mon dossier de candidature en allemand (199\u00A0DH).","",
-    "*\u{1F1E9}\u{1F1EA} DOSSIER BEWERBUNG*","",
-    "\u{1F464} Nom : "+v("f_first"),
-    "\u{1F3AF} Je cherche : "+needVal(),
-    "\u{1F4F1} WhatsApp : "+v("f_phone"),"",
-    "\u{1F4CE} Je vous envoie ici ma photo et mon CV (ou mes informations).",
-    "\u{1F310} Source : procvplus.online"];
-  return L.map(function(x){return x?"\u200E"+x:x}).join("\n");
+  var need=needVal();
+  var L=["Bonjour,","",
+    "Je souhaite commander mon dossier de candidature en allemand (Lebenslauf, Motivationsschreiben et Deckblatt) au tarif de 199\u00A0DH.","",
+    "*DEMANDE \u2013 PRO CV+*",
+    "Nom complet : "+v("f_first"),
+    "Type de candidature : "+(need==="Ausbildung"?"Ausbildung (formation professionnelle)":"Arbeit (emploi)"),
+    "T\u00E9l\u00E9phone : "+v("f_phone"),"",
+    "Je vous transmets ma photo et mon CV (ou mes informations) dans cette conversation.","",
+    "Merci.",
+    "_Demande envoy\u00E9e depuis procvplus.online_"];
+  return L.join("\n");
 }
 function apply(){
   var d=T[lang];
