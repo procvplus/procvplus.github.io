@@ -611,35 +611,30 @@ function cookie(n){var m=document.cookie.match(new RegExp("(?:^|; )"+n+"=([^;]*)
 function fbcVal(){var c=cookie("_fbc"); if(c) return c; var m=location.search.match(/[?&]fbclid=([^&]+)/); return m?"fb.1."+Date.now()+"."+decodeURIComponent(m[1]):""}
 function phoneOk(p){return p.replace(/\D/g,"").length>=9}
 function buildMessage(){
-  var need=needVal(), BAR="\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501";
-  /* Symboles du plan Unicode de base uniquement : s'affichent sur tous les téléphones */
-  var FLAG="\u2726", U="\u25C6", G="\u25C6", M="\u25C6", C="\u2709\uFE0F";
+  var need=needVal(), f=(need==="Ausbildung");
   if(lang==="ar"){
-    return ["السلام عليكم، أرغب في طلب ملف الترشيح باللغة الألمانية.","",
-      "```"+FLAG+" DOSSIER BEWERBUNG "+FLAG,BAR+"```","",
-      U+" *المترشح*",
-      "الاسم الكامل: "+v("f_first"),
-      "رقم الهاتف: "+v("f_phone"),"",
-      G+" *الهدف*",
-      "نوع الترشيح: "+need,
-      "المجال المطلوب: "+v("f_job"),"",
-      M+" *العرض*",
-      "الملف الكامل: 199 درهم","",
-      C+" سأرسل لكم صورتي الشخصية وسيرتي الذاتية (أو معلوماتي) في هذه المحادثة.","",
-      "شكراً."].join("\n");
+    return ["السلام عليكم \u{1F44B} أرغب في طلب ملف الترشيح باللغة الألمانية.","",
+      "*\u{1F1E9}\u{1F1EA} DOSSIER BEWERBUNG*","",
+      "\u{1F464} الاسم الكامل: "+v("f_first"),
+      "\u{1F3AF} نوع الترشيح: "+need,
+      "\u{1F4BC} "+(f?"التكوين المطلوب: ":"المجال المطلوب: ")+v("f_job"),
+      "\u{1F4F1} رقم الهاتف: "+v("f_phone"),"",
+      "\u{1F4B0} العرض: الملف الكامل، 199 درهم ✔",
+      "\u{1F4CE} السيرة الذاتية: سأرسلها هنا",
+      "\u{1F4F7} الصورة: سأرسلها هنا",
+      "\u{1F310} المصدر: procvplus.online"].join("\n");
   }
-  return ["```"+FLAG+" DOSSIER BEWERBUNG "+FLAG,BAR+"```","",
-    "Bonjour, je souhaite commander mon dossier de candidature en allemand.","",
-    U+" *CANDIDAT(E)*",
-    "Nom complet : "+v("f_first"),
-    "Téléphone : "+v("f_phone"),"",
-    G+" *OBJECTIF*",
-    "Type de candidature : "+need,
-    "Domaine visé : "+v("f_job"),"",
-    M+" *OFFRE*",
-    "Dossier complet : 199 DH","",
-    C+" Je vous transmets ma photo et mon CV (ou mes informations) dans cette conversation.","",
-    "Merci."].join("\n");
+  var L=["Bonjour \u{1F44B} Je souhaite commander mon dossier de candidature en allemand.","",
+    "*\u{1F1E9}\u{1F1EA} DOSSIER BEWERBUNG*","",
+    "\u{1F464} Nom complet : "+v("f_first"),
+    "\u{1F3AF} Je cherche : "+need,
+    "\u{1F4BC} "+(f?"Formation visée : ":"Poste visé : ")+v("f_job"),
+    "\u{1F4F1} Téléphone : "+v("f_phone"),"",
+    "\u{1F4B0} Offre : dossier complet, 199 DH ✔",
+    "\u{1F4CE} CV : je l'envoie ici",
+    "\u{1F4F7} Photo : je l'envoie ici",
+    "\u{1F310} Source : procvplus.online"];
+  return L.map(function(x){return x?"‎"+x:x}).join("\n");
 }
 function apply(){
   var d=T[lang];
