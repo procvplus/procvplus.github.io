@@ -579,7 +579,7 @@ function $(id){return document.getElementById(id)}
 function v(id){return ($(id).value||"").trim()}
 function waHref(text){return "https://wa.me/"+PHONE+"?text="+encodeURIComponent(text)}
 /* Google Sheet (Apps Script) qui reçoit les commandes */
-var LEAD_URL = "";
+var LEAD_URL = "https://script.google.com/macros/s/AKfycbw1qseYwu1iKUJe50iYnV5lH9iS0ODyuEonf9X3_fRc3yhHj9K5GlrQsdVyGjR9c2T0mA/exec";
 function needVal(){var t=document.querySelector('input[name=f_need]:checked');return t?t.value:""}
 function isForm(){return needVal()==="Ausbildung"}
 function updJob(){}
