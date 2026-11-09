@@ -691,8 +691,10 @@ $("order").addEventListener("submit",function(e){
   var msg=buildMessage(), href=waHref(msg);
   $("prevMsg").textContent=msg; $("waLink").href=href;
   $("order").style.display="none"; $("done").classList.add("on");
-  /* Même onglet : fonctionne aussi dans le navigateur intégré de Facebook/Instagram (où les nouveaux onglets sont souvent bloqués) */
-  setTimeout(function(){ try{ location.href=href; }catch(x){} },400);
+  /* Mobile / Facebook / Instagram : même onglet (les nouveaux onglets y sont souvent bloqués). Ordinateur : nouvel onglet. */
+  var mob=/Android|iPhone|iPad|iPod|FBAN|FBAV|FB_IAB|Instagram|Mobile/i.test(navigator.userAgent);
+  if(mob){ setTimeout(function(){ try{ location.href=href; }catch(x){} },400); }
+  else { try{ window.open(href,"_blank","noopener"); }catch(x){} }
 });
 document.querySelectorAll(".leadform input,.leadform select").forEach(function(el){
   el.addEventListener("input",function(){ el.classList.remove("bad"); if(el.name==="f_type") document.querySelectorAll(".opts .opt").forEach(function(o){o.classList.remove("bad")}); });
