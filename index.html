@@ -400,7 +400,7 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
   <div class="done" id="done">
     <h3 data-t="doneH"></h3><p class="lf-p" data-t="doneP"></p>
     <div class="prev" id="prevMsg"></div>
-    <div class="cta-row" style="justify-content:center"><a class="btn btn-wa" id="waLink" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><use href="#wa"/></svg><span data-t="send2"></span></a>
+    <div class="cta-row" style="justify-content:center"><a class="btn btn-wa" id="waLink" href="#"><svg viewBox="0 0 24 24"><use href="#wa"/></svg><span data-t="send2"></span></a>
       <button type="button" class="btn btn-line" id="copyMsg" data-t="copy"></button></div>
   </div>
   </div>
@@ -691,7 +691,8 @@ $("order").addEventListener("submit",function(e){
   var msg=buildMessage(), href=waHref(msg);
   $("prevMsg").textContent=msg; $("waLink").href=href;
   $("order").style.display="none"; $("done").classList.add("on");
-  try{ window.open(href,"_blank","noopener"); }catch(x){}
+  /* Même onglet : fonctionne aussi dans le navigateur intégré de Facebook/Instagram (où les nouveaux onglets sont souvent bloqués) */
+  setTimeout(function(){ try{ location.href=href; }catch(x){} },400);
 });
 document.querySelectorAll(".leadform input,.leadform select").forEach(function(el){
   el.addEventListener("input",function(){ el.classList.remove("bad"); if(el.name==="f_type") document.querySelectorAll(".opts .opt").forEach(function(o){o.classList.remove("bad")}); });
