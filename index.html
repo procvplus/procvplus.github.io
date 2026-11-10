@@ -238,8 +238,11 @@ footer .wrap{display:grid;gap:12px}
 .lf-meta>span{display:inline-flex;align-items:center;gap:5px}
 .lf-meta svg{width:15px;height:15px;color:var(--ok)}
 .leadform svg.ic,.leadform svg.fi,.leadform svg.sic{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.pick .pic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--soft);color:var(--accent);margin-bottom:4px;transition:background .15s,color .15s}
-.pick .pic svg{width:24px;height:24px}
+.pick .pic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--soft);color:var(--accent);flex:none;transition:background .15s,color .15s}
+.pick .pic svg{width:17px;height:17px}
+.pick .pt{font-size:.95rem!important}
+.pick .ps{display:none}
+.pick:has(input[value=contrat]) .ps{display:inline}
 .pick:has(input:checked) .pic{background:var(--cta);color:#fff}
 .pick:has(input[value=contrat]){flex-direction:row;gap:8px}
 .pick:has(input[value=contrat]) svg{width:17px;height:17px;color:var(--muted)}
@@ -250,6 +253,7 @@ footer .wrap{display:grid;gap:12px}
 html[dir=rtl] .iw input[dir=ltr]{padding-left:14px!important;padding-right:44px!important}
 .iw:focus-within .fi{color:var(--accent)}
 #send{display:inline-flex;align-items:center;justify-content:center;gap:10px}
+#send[hidden]{display:none!important}
 #send .sic{width:19px;height:19px}
 html[dir=rtl] #send .sic{transform:scaleX(-1)}
 .lf-p{color:var(--muted);font-size:.95rem;margin-bottom:16px}
@@ -315,15 +319,18 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
 .nofit[hidden],#qBody[hidden]{display:none}
 .nofit p{margin:4px 0 0}
 #qBody{display:grid;gap:12px}
-.lvls{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
-.lvl{position:relative;display:flex;align-items:center;justify-content:center;min-height:42px;border:1.5px solid var(--line);background:var(--surface);border-radius:11px;font-weight:800;cursor:pointer;direction:ltr;transition:border-color .15s,background .15s}
+.lvls{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.lvlfld{padding:14px;border-radius:16px;background:color-mix(in srgb,var(--brand) 6%,var(--surface));border:1px solid color-mix(in srgb,var(--brand) 18%,transparent)}
+.lvlfld .lb{font-size:1.02rem}
+#typeWrap[hidden],#noLvl[hidden]{display:none}
+.lvl{position:relative;display:flex;align-items:center;justify-content:center;min-height:48px;font-size:1.05rem;border:1.5px solid var(--line);background:var(--surface);border-radius:11px;font-weight:800;cursor:pointer;direction:ltr;transition:border-color .15s,background .15s}
 .lvl input{position:absolute;opacity:0;pointer-events:none}
 .lvl:has(input:checked){border-color:var(--cta);background:var(--cta);color:#fff}
 .lvl.wide{grid-column:1/-1;font-weight:700;font-size:.88rem;color:var(--muted);direction:inherit}
 .lvl.wide:has(input:checked){color:#fff}
 .lvl.bad{border-color:#c0392b}
-.picks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pick{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:16px 8px;font-weight:800;cursor:pointer;line-height:1.3;transition:border-color .15s,background .15s,transform .15s}
+.picks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pick{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:8px;text-align:center;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;padding:9px 8px;font-weight:800;cursor:pointer;line-height:1.3;transition:border-color .15s,background .15s,transform .15s}
 .pick input{position:absolute;opacity:0;pointer-events:none}
 .pick .pt{font-size:1.05rem;font-weight:800;letter-spacing:.01em;direction:ltr}
 .pick .ps{font-size:.86rem;font-weight:600;color:var(--muted)}
@@ -387,17 +394,7 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
     <div class="lf-top"><span class="lf-badge"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span><div><h2 class="lf-h" data-t="lfH"></h2>
     <p class="lf-meta"><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-t="lfM1"></span></span><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span data-t="lfM2"></span></span></p></div></div>
     <p class="lf-p" data-t="lfP"></p>
-    <div class="fld"><span class="lb"><span data-t="fNeed2"></span></span>
-      <div class="picks" role="radiogroup">
-        <label class="pick"><input type="radio" name="f_need" value="Ausbildung"><span class="pic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><span class="pt">Ausbildung</span><span class="ps" data-t="pAus"></span></label>
-        <label class="pick"><input type="radio" name="f_need" value="Arbeit"><span class="pic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg></span><span class="pt">Arbeit</span><span class="ps" data-t="pArb"></span></label>
-        <label class="pick"><input type="radio" name="f_need" value="contrat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m5.7 5.7 12.6 12.6"/></svg><span class="ps" data-t="pCon"></span></label>
-      </div></div>
-    <div class="nofit" id="noFit" hidden><strong data-t="noFitH"></strong><p data-t="noFitP"></p></div>
-    <div id="qBody">
-      <div class="fld"><label for="f_first"><span data-t="fFull"></span></label><span class="iw"><svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><input id="f_first" type="text" autocomplete="name" data-t-ph="namePh"></span></div>
-      <div class="fld"><label for="f_job"><span data-t="fDom"></span></label><span class="iw"><svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><input id="f_job" type="text" autocomplete="off" placeholder="Koch, Pflege, Kfz-Mechatroniker…"></span></div>
-      <div class="fld"><span class="lb"><span data-t="fDe"></span></span>
+    <div class="fld lvlfld"><span class="lb"><span data-t="fDe"></span> <small class="lbhint" data-t="fDeHint"></small></span>
         <div class="lvls" role="radiogroup">
           <label class="lvl"><input type="radio" name="f_de" value="A1"><span>A1</span></label>
           <label class="lvl"><input type="radio" name="f_de" value="A2"><span>A2</span></label>
@@ -406,6 +403,19 @@ input:focus-visible,select:focus-visible,.opt:focus-within{outline:3px solid var
           <label class="lvl"><input type="radio" name="f_de" value="C1"><span>C1+</span></label>
           <label class="lvl wide"><input type="radio" name="f_de" value="none"><span data-t="notYet"></span></label>
         </div></div>
+    <div class="nofit" id="noLvl" hidden><strong data-t="noLvlH"></strong><p data-t="noLvlP"></p></div>
+    <div id="typeWrap">
+    <div class="fld"><span class="lb"><span data-t="fNeed2"></span></span>
+      <div class="picks" role="radiogroup">
+        <label class="pick"><input type="radio" name="f_need" value="Ausbildung"><span class="pic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span><span class="pt">Ausbildung</span><span class="ps" data-t="pAus"></span></label>
+        <label class="pick"><input type="radio" name="f_need" value="Arbeit"><span class="pic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M2 13h20"/></svg></span><span class="pt">Arbeit</span><span class="ps" data-t="pArb"></span></label>
+        <label class="pick"><input type="radio" name="f_need" value="contrat"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m5.7 5.7 12.6 12.6"/></svg><span class="ps" data-t="pCon"></span></label>
+      </div></div>
+    </div>
+    <div class="nofit" id="noFit" hidden><strong data-t="noFitH"></strong><p data-t="noFitP"></p></div>
+    <div id="qBody">
+      <div class="fld"><label for="f_first"><span data-t="fFull"></span></label><span class="iw"><svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><input id="f_first" type="text" autocomplete="name" data-t-ph="namePh"></span></div>
+      <div class="fld"><label for="f_job"><span data-t="fDom"></span></label><span class="iw"><svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><input id="f_job" type="text" autocomplete="off" placeholder="Koch, Pflege, Kfz-Mechatroniker…"></span></div>
       <div class="fld"><label for="f_phone"><span data-t="fPhone"></span></label><span class="iw"><svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><input id="f_phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" placeholder="06 12 34 56 78"></span></div>
     </div>
     <div class="err" id="err" role="alert"></div>
@@ -533,7 +543,7 @@ fr:{navCta:"Commander",cta1:"Remplir le formulaire",cta2:"Écrire sur WhatsApp",
 h1:"L'entreprise allemande voit votre dossier <em>avant de vous voir</em>",
 lead:"Faites bonne impression dès le premier regard. Nous préparons votre Lebenslauf, votre Motivationsschreiben et votre Deckblatt en allemand, rédigés pour l'Ausbildung ou le poste que vous visez, et prêts en 24 à 48 h.",
 tick1:"Prêt en 24 à 48 h",tick2:"Conforme DIN 5008 et ATS",tick3:"Suivi direct sur WhatsApp",phLbl:"Dossier complet",phNum:PRICE,phCur:"DH",phT1:"3 documents en allemand, un seul prix",phT2:"Page de garde + lettre de motivation + CV",
-lfH:"Demande de dossier de candidature",lfP:"Renseignez vos coordonnées : nous vous contactons directement sur WhatsApp pour compléter votre dossier.",fNeed2:"Type de candidature",pAus:"Formation professionnelle",pArb:"Emploi",pCon:"Je cherche un contrat de travail ou un visa",fPhone:"Numéro de téléphone (WhatsApp)",lfM1:"Moins d'une minute",lfM2:"Données confidentielles",fDom:"Domaine visé",fNeed:"De quoi avez-vous besoin ?",needDeja:"J'ai déjà mon dossier, je cherche un contrat ou une entreprise",agree:"👌 C'est noté : 199 DH le dossier complet",errAgree:"Un petit clic sur 👌 et c'est parti.",lvlNote:"Bon à savoir : la plupart des entreprises demandent au moins le niveau B1 pour une Ausbildung. Votre dossier peut tout de même être préparé.",ctaHow:"Comment ça marche ?",fitH:"Ce service est-il <em>fait pour vous</em> ?",fitP:"Pour ne faire perdre de temps à personne, voici exactement ce que nous faisons, et ce que nous ne faisons pas.",fitYesH:"Fait pour vous si…",fy1:"Vous visez une Ausbildung ou un emploi en Allemagne",fy2:"Il vous faut un dossier complet en allemand : CV, lettre et page de garde",fy3:"Vous voulez un dossier rédigé pour vous, pas un modèle copié",fy4:"Vous voulez un dossier prêt en 24 à 48 h",fitNoH:"Pas pour vous si…",fn1:"Vous cherchez un contrat de travail ou une promesse d'embauche",fn2:"Vous cherchez un visa ou quelqu'un qui fait les démarches à votre place",fn3:"Vous avez déjà un dossier complet en allemand",fitCta:"C'est pour moi : je commence",q0:"Vous trouvez-vous un contrat ou un visa ?",a0:"Non. Nous préparons uniquement votre dossier de candidature en allemand. C'est vous qui postulez auprès des entreprises. Méfiez-vous de quiconque vend des contrats de travail.",needDossier:"Je veux qu'on me prépare mon dossier (CV + lettre de motivation + page de garde) pour 199 DH",needContrat:"Je cherche un contrat de travail, un visa ou quelqu'un qui me trouve un emploi",noFitH:"Nous ne proposons pas de contrats de travail ni de visas.",noFitP:"Notre service : préparer votre dossier de candidature en allemand (199 DH), que vous envoyez ensuite vous-même aux entreprises. Si c'est ce qu'il vous faut, choisissez la première option.",fFull:"Nom complet",namePh:"Prénom et nom",notice:"⚠️ Nous ne vendons ni contrats de travail ni visas : uniquement la préparation de votre dossier de candidature en allemand.",errNeed:"Veuillez d'abord choisir le type de candidature.",
+lfH:"Demande de dossier de candidature",lfP:"Renseignez vos coordonnées : nous vous contactons directement sur WhatsApp pour compléter votre dossier.",fNeed2:"Type de candidature",pAus:"Formation professionnelle",pArb:"Emploi",pCon:"Je cherche un contrat de travail ou un visa",fPhone:"Numéro de téléphone (WhatsApp)",lfM1:"Moins d'une minute",lfM2:"Données confidentielles",fDom:"Domaine visé",fDeHint:"",noLvlH:"Notre service s'adresse aux personnes qui ont commencé l'allemand.",noLvlP:"La plupart des entreprises allemandes demandent au moins le niveau B1. Nous vous conseillons de commencer par apprendre la langue : nous serons là pour préparer votre dossier dès que vous aurez atteint le niveau A2 ou plus.",errDe:"Veuillez d'abord indiquer votre niveau d'allemand.",fNeed:"De quoi avez-vous besoin ?",needDeja:"J'ai déjà mon dossier, je cherche un contrat ou une entreprise",agree:"👌 C'est noté : 199 DH le dossier complet",errAgree:"Un petit clic sur 👌 et c'est parti.",lvlNote:"Bon à savoir : la plupart des entreprises demandent au moins le niveau B1 pour une Ausbildung. Votre dossier peut tout de même être préparé.",ctaHow:"Comment ça marche ?",fitH:"Ce service est-il <em>fait pour vous</em> ?",fitP:"Pour ne faire perdre de temps à personne, voici exactement ce que nous faisons, et ce que nous ne faisons pas.",fitYesH:"Fait pour vous si…",fy1:"Vous visez une Ausbildung ou un emploi en Allemagne",fy2:"Il vous faut un dossier complet en allemand : CV, lettre et page de garde",fy3:"Vous voulez un dossier rédigé pour vous, pas un modèle copié",fy4:"Vous voulez un dossier prêt en 24 à 48 h",fitNoH:"Pas pour vous si…",fn1:"Vous cherchez un contrat de travail ou une promesse d'embauche",fn2:"Vous cherchez un visa ou quelqu'un qui fait les démarches à votre place",fn3:"Vous avez déjà un dossier complet en allemand",fitCta:"C'est pour moi : je commence",q0:"Vous trouvez-vous un contrat ou un visa ?",a0:"Non. Nous préparons uniquement votre dossier de candidature en allemand. C'est vous qui postulez auprès des entreprises. Méfiez-vous de quiconque vend des contrats de travail.",needDossier:"Je veux qu'on me prépare mon dossier (CV + lettre de motivation + page de garde) pour 199 DH",needContrat:"Je cherche un contrat de travail, un visa ou quelqu'un qui me trouve un emploi",noFitH:"Nous ne proposons pas de contrats de travail ni de visas.",noFitP:"Notre service : préparer votre dossier de candidature en allemand (199 DH), que vous envoyez ensuite vous-même aux entreprises. Si c'est ce qu'il vous faut, choisissez la première option.",fFull:"Nom complet",namePh:"Prénom et nom",notice:"⚠️ Nous ne vendons ni contrats de travail ni visas : uniquement la préparation de votre dossier de candidature en allemand.",errNeed:"Veuillez d'abord choisir le type de candidature.",
 optAus:"Ausbildung (formation)",optJob:"Emploi",jobPosteLbl:"Poste visé",jobFormLbl:"Formation visée",jobPosteLbl2:"",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"Je n'ai pas de CV : je remplis mes informations ici",noCvP:"Pas de souci. Indiquez ce que vous savez, nous construisons le CV pour vous. Un élément par ligne, avec les dates. Tout est facultatif.",nPhone:"Téléphone / WhatsApp",nPhonePh:"+212 6...",nBirth:"Date de naissance",nBirthPh:"JJ/MM/AAAA",nAddr:"Adresse complète",nAddrPh:"Rue, code postal, ville, pays",nEdu:"Études et diplômes (bac, université…)",nEduPh:"2018 - 2019 | Baccalauréat | Lycée X, Settat\n2019 - 2023 | Licence en économie | Université Y, Settat",nCourse:"Cours de langue (allemand…)",nCoursePh:"09.2023 - 05.2024 | Cours intensif d'allemand | Centre Z, Settat",nExp:"Expériences et stages",nExpPh:"2022 - 2023 | Serveur | Café X, Rabat",nCert:"Certificats et examens",nCertPh:"telc Deutsch B1 | date de l'examen : 14.03.2025",nLang:"Langues et niveaux",nLangPh:"Arabe : langue maternelle, Français : B1, Anglais : A2",nPerm:"Permis de conduire",nPermPh:"Ex : B (ou aucun)",nSkills:"Compétences",nSkillsPh:"Travail en équipe, rigueur, Excel…",nHob:"Centres d'intérêt",nHobPh:"Sport, voyages, lecture…",nWhy:"Pourquoi ce métier / cette formation ?",nWhyPh:"Quelques mots : votre motivation, votre projet en Allemagne",nFiles:"Certificats, diplômes, permis, attestations (PDF ou photo)",nFilesH:"Facultatif. Vous pourrez les envoyer avec le message à l'étape suivante.",
 shareF:"Envoyer mes documents sur WhatsApp",reassure:"<span>✓ Réponse rapide</span><span>✓ Prêt en 24-48&nbsp;h</span><span>✓ Retouches gratuites</span>",fFirst:"Prénom",fLast:"Nom",fDe:"Niveau d'allemand",fCity:"Ville",fMail:"E-mail",fType:"Je cherche",fJob:"Métier exact visé",choose:"Choisir…",notYet:"Je n'ai pas encore commencé",
@@ -574,7 +584,7 @@ ar:{navCta:"اطلب ملفك",cta1:"املأ الاستمارة",cta2:"تواص
 h1:"الشركة الألمانية كتشوف الملف ديالك <em>قبل ما تشوفك</em>",
 lead:"خليها تاخد عليك فكرة مزيانة من الأول. كنوجدو ليك Lebenslauf و Motivationsschreiben و Deckblatt بالألمانية، مكتوبين خصيصاً للأوسبيلدونغ ولا الخدمة اللي باغي، وجاهزين خلال 24 حتى 48 ساعة.",
 tick1:"جاهز خلال 24 إلى 48 ساعة",tick2:"وفق معيار DIN 5008 وأنظمة ATS",tick3:"متابعة مباشرة عبر واتساب",phLbl:"الملف الكامل",phNum:PRICE,phCur:"درهم",phT1:"3 وثائق بالألمانية بثمن واحد",phT2:"صفحة الغلاف + رسالة التحفيز + الـ CV",
-lfH:"طلب ملف الترشيح",lfP:"أدخل معلوماتك، وسنتواصل معك مباشرة عبر واتساب لاستكمال ملفك.",fNeed2:"نوع الترشيح",pAus:"التكوين المهني",pArb:"العمل",pCon:"أبحث عن عقد عمل أو تأشيرة",fPhone:"رقم الهاتف (واتساب)",lfM1:"أقل من دقيقة",lfM2:"معلوماتك سرية",fDom:"المجال المطلوب",fNeed:"شنو كتحتاج بالضبط؟",needDeja:"عندي الملف ديجا، كنقلب على عقد ولا شركة",agree:"👌 تمام، الملف كامل بـ 199 درهم",errAgree:"كليكي على 👌 وزيد.",lvlNote:"معلومة: أغلب الشركات كتطلب على الأقل مستوى B1 للأوسبيلدونغ. ولكن نقدرو نوجدو ليك الملف عادي.",ctaHow:"كيفاش كنخدمو؟",fitH:"واش هاد الخدمة <em>ليك</em>؟",fitP:"باش ما نضيعو الوقت لحتى واحد، هادشي اللي كنديرو بالضبط، وهادشي اللي ما كنديروش.",fitYesH:"ليك إلا…",fy1:"باغي دير Ausbildung ولا تخدم فألمانيا",fy2:"محتاج ملف ترشيح كامل بالألمانية: CV، رسالة التحفيز وصفحة الغلاف",fy3:"باغي ملف مكتوب خصيصاً ليك، ماشي نموذج منقول",fy4:"باغي الملف واجد خلال 24 حتى 48 ساعة",fitNoH:"ماشي ليك إلا…",fn1:"كتقلب على عقد عمل ولا وعد بالخدمة",fn2:"كتقلب على فيزا ولا شي واحد يدير ليك الإجراءات",fn3:"عندك ديجا ملف كامل بالألمانية",fitCta:"هادشي اللي محتاج، نبدا دابا",q0:"واش كتلقاو ليا عقد عمل ولا فيزا؟",a0:"لا. كنوجدو غير ملف الترشيح بالألمانية، ونتا اللي كتصيفطو للشركات. رد البال من أي واحد كيبيع عقود الخدمة.",needDossier:"باغي توجدو ليا الملف ديالي (CV + رسالة التحفيز + صفحة الغلاف) بـ 199 درهم",needContrat:"كنقلب على عقد عمل، فيزا، ولا شي واحد يلقى ليا خدمة",noFitH:"لا نقدّم عقود عمل ولا تأشيرات.",noFitP:"خدمتنا هي إعداد ملف الترشيح باللغة الألمانية مقابل 199 درهماً، وأنت من يرسله إلى الشركات. إذا كان هذا ما تحتاجه، اختر التكوين المهني أو العمل.",fFull:"الاسم الكامل",namePh:"الاسم والنسب",notice:"⚠️ ما كنبيعوش عقود عمل ولا فيزا: غير كنوجدو ملف الترشيح ديالك بالألمانية.",errNeed:"يرجى اختيار نوع الترشيح أولاً.",
+lfH:"طلب ملف الترشيح",lfP:"أدخل معلوماتك، وسنتواصل معك مباشرة عبر واتساب لاستكمال ملفك.",fNeed2:"نوع الترشيح",pAus:"التكوين المهني",pArb:"العمل",pCon:"أبحث عن عقد عمل أو تأشيرة",fPhone:"رقم الهاتف (واتساب)",lfM1:"أقل من دقيقة",lfM2:"معلوماتك سرية",fDom:"المجال المطلوب",fDeHint:"",noLvlH:"خدمتنا موجّهة لمن بدأ تعلّم اللغة الألمانية.",noLvlP:"أغلب الشركات الألمانية تطلب على الأقل مستوى B1. ننصحك بالبدء في تعلّم اللغة أولاً، وسنكون في انتظارك لإعداد ملفك عندما تصل إلى مستوى A2 أو أكثر.",errDe:"يرجى اختيار مستواك في اللغة الألمانية أولاً.",fNeed:"شنو كتحتاج بالضبط؟",needDeja:"عندي الملف ديجا، كنقلب على عقد ولا شركة",agree:"👌 تمام، الملف كامل بـ 199 درهم",errAgree:"كليكي على 👌 وزيد.",lvlNote:"معلومة: أغلب الشركات كتطلب على الأقل مستوى B1 للأوسبيلدونغ. ولكن نقدرو نوجدو ليك الملف عادي.",ctaHow:"كيفاش كنخدمو؟",fitH:"واش هاد الخدمة <em>ليك</em>؟",fitP:"باش ما نضيعو الوقت لحتى واحد، هادشي اللي كنديرو بالضبط، وهادشي اللي ما كنديروش.",fitYesH:"ليك إلا…",fy1:"باغي دير Ausbildung ولا تخدم فألمانيا",fy2:"محتاج ملف ترشيح كامل بالألمانية: CV، رسالة التحفيز وصفحة الغلاف",fy3:"باغي ملف مكتوب خصيصاً ليك، ماشي نموذج منقول",fy4:"باغي الملف واجد خلال 24 حتى 48 ساعة",fitNoH:"ماشي ليك إلا…",fn1:"كتقلب على عقد عمل ولا وعد بالخدمة",fn2:"كتقلب على فيزا ولا شي واحد يدير ليك الإجراءات",fn3:"عندك ديجا ملف كامل بالألمانية",fitCta:"هادشي اللي محتاج، نبدا دابا",q0:"واش كتلقاو ليا عقد عمل ولا فيزا؟",a0:"لا. كنوجدو غير ملف الترشيح بالألمانية، ونتا اللي كتصيفطو للشركات. رد البال من أي واحد كيبيع عقود الخدمة.",needDossier:"باغي توجدو ليا الملف ديالي (CV + رسالة التحفيز + صفحة الغلاف) بـ 199 درهم",needContrat:"كنقلب على عقد عمل، فيزا، ولا شي واحد يلقى ليا خدمة",noFitH:"لا نقدّم عقود عمل ولا تأشيرات.",noFitP:"خدمتنا هي إعداد ملف الترشيح باللغة الألمانية مقابل 199 درهماً، وأنت من يرسله إلى الشركات. إذا كان هذا ما تحتاجه، اختر التكوين المهني أو العمل.",fFull:"الاسم الكامل",namePh:"الاسم والنسب",notice:"⚠️ ما كنبيعوش عقود عمل ولا فيزا: غير كنوجدو ملف الترشيح ديالك بالألمانية.",errNeed:"يرجى اختيار نوع الترشيح أولاً.",
 optAus:"Ausbildung (تكوين مهني)",optJob:"عمل",jobPosteLbl:"المنصب المطلوب",jobFormLbl:"التكوين المطلوب",jobPh1:"LKW-Fahrer, Pflegefachkraft...",jobPh2:"Fachinformatiker, Pflegefachmann, Koch...",
 noCv:"ليست لدي سيرة ذاتية: سأكتب معلوماتي هنا",noCvP:"لا مشكل. اكتب ما تعرفه وسنبني لك السيرة الذاتية. عنصر في كل سطر مع التواريخ. كل الحقول اختيارية.",nPhone:"الهاتف / واتساب",nPhonePh:"+212 6...",nBirth:"تاريخ الازدياد",nBirthPh:"JJ/MM/AAAA",nAddr:"العنوان الكامل",nAddrPh:"الشارع، الرمز البريدي، المدينة، البلد",nEdu:"الدراسة والشهادات (باك، جامعة…)",nEduPh:"2018 - 2019 | باكالوريا | ثانوية X، سطات\n2019 - 2023 | إجازة في الاقتصاد | جامعة Y، سطات",nCourse:"دورات اللغة (الألمانية…)",nCoursePh:"09.2023 - 05.2024 | دورة مكثفة في الألمانية | مركز Z، سطات",nExp:"التجارب والتداريب",nExpPh:"2022 - 2023 | نادل | مقهى X، الرباط",nCert:"الشواهد والامتحانات",nCertPh:"telc Deutsch B1 | تاريخ الامتحان: 14.03.2025",nLang:"اللغات والمستويات",nLangPh:"العربية: لغة أم، الفرنسية: B1، الإنجليزية: A2",nPerm:"رخصة السياقة",nPermPh:"مثال: B (أو لا يوجد)",nSkills:"المهارات",nSkillsPh:"العمل الجماعي، الدقة، Excel…",nHob:"الاهتمامات",nHobPh:"رياضة، سفر، قراءة…",nWhy:"لماذا هذه المهنة / هذا التكوين؟",nWhyPh:"بضع كلمات: دافعك ومشروعك في ألمانيا",nFiles:"الشواهد والدبلومات ورخصة السياقة والوثائق (PDF أو صورة)",nFilesH:"اختياري. يمكنك إرسالها مع الرسالة في الخطوة التالية.",
 shareF:"إرسال وثائقي عبر واتساب",reassure:"<span>✓ رد سريع</span><span>✓ جاهز في 24-48 ساعة</span><span>✓ تعديلات مجانية</span>",fFirst:"الاسم الشخصي",fLast:"الاسم العائلي",fDe:"مستوى اللغة الألمانية",fCity:"المدينة",fMail:"البريد الإلكتروني",fType:"أبحث عن",fJob:"المهنة المطلوبة بالتحديد",choose:"اختر…",notYet:"لم أبدأ تعلّمها بعد",
@@ -692,20 +702,21 @@ $("lang").addEventListener("click",function(){lang=lang==="ar"?"fr":"ar"; try{lo
 function mark(el,bad){ if(el) el.classList.toggle("bad",!!bad); }
 $("order").addEventListener("submit",function(e){
   e.preventDefault();
-  var need=needVal();
+  var need=needVal(), de=deVal();
+  document.querySelectorAll(".lvls .lvl").forEach(function(o){mark(o,!de)});
+  if(!de){ $("err").textContent=T[lang].errDe; return; }
+  if(de==="none"){ return; }
   document.querySelectorAll(".picks .pick").forEach(function(o){mark(o,!need)});
   if(!need){ $("err").textContent=T[lang].errNeed; return; }
   if(need==="contrat"){ return; }
   var bad=null;
   if(!v("f_first")){ mark($("f_first"),1); bad=bad||$("f_first"); }
   if(!v("f_job")){ mark($("f_job"),1); bad=bad||$("f_job"); }
-  var de=deVal(); document.querySelectorAll(".lvls .lvl").forEach(function(o){mark(o,!de)});
-  if(!de){ bad=bad||document.querySelector("input[name=f_de]"); }
   if(!phoneOk(v("f_phone"))){ mark($("f_phone"),1); bad=bad||$("f_phone"); }
   if(bad){ $("err").textContent=T[lang].errReq; try{bad.focus()}catch(x){} return; }
   $("err").textContent="";
   var eid="lead-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
-  var low=(de==="A1"||de==="none");
+  var low=(de==="A1");
   /* Niveau A1 / pas commencé : enregistré dans le Sheet mais pas compté comme Lead (Meta apprend sur A2+) */
   if(low){ pixelOnce("LeadLowLevel",{content_name:"dossier_"+need,level:de},true); }
   else { pixelOnce("Lead",{content_name:"dossier_"+need,value:Number(PRICE),currency:"MAD"},false,{eventID:eid}); }
@@ -735,11 +746,21 @@ $("copyMsg").addEventListener("click",function(){
   try{ navigator.clipboard.writeText(m).then(function(){b.textContent=T[lang].copied; setTimeout(function(){b.textContent=T[lang].copy},1500)},function(){var r=document.createRange(); r.selectNodeContents($("prevMsg")); var s=getSelection(); s.removeAllRanges(); s.addRange(r)}) }catch(e){}
 });
 document.querySelectorAll("input[name=f_de]").forEach(function(r){r.addEventListener("change",function(){document.querySelectorAll(".lvls .lvl").forEach(function(o){o.classList.remove("bad")})})});
+function gate(){
+  var de=deVal(), nd=needVal(), noL=(de==="none"), noC=(!noL&&nd==="contrat");
+  $("noLvl").hidden=!noL; $("typeWrap").hidden=noL;
+  $("noFit").hidden=!noC; $("qBody").hidden=(noL||noC); $("send").hidden=(noL||noC);
+  $("err").textContent="";
+}
+document.querySelectorAll("input[name=f_de]").forEach(function(r){r.addEventListener("change",function(){
+  gate();
+  if(this.value==="none"){ try{ if(window.fbq) fbq("trackCustom","NotQualified",{reason:"no_german"}); }catch(x){} }
+})});
 document.querySelectorAll("input[name=f_need]").forEach(function(r){r.addEventListener("change",function(){
-  var no=this.value==="contrat"; $("noFit").hidden=!no; $("qBody").hidden=no; $("send").hidden=no; $("err").textContent="";
+  gate();
   document.querySelectorAll(".picks .pick").forEach(function(o){o.classList.remove("bad")});
-  if(!no){ try{ if(!v("f_first")) $("f_first").focus(); }catch(x){} }
-  if(no){ try{ if(window.fbq) fbq("trackCustom","NotQualified",{reason:this.value}); }catch(x){} }
+  if(this.value==="contrat"){ try{ if(window.fbq) fbq("trackCustom","NotQualified",{reason:"contrat"}); }catch(x){} }
+  else { try{ if(!v("f_first")) $("f_first").focus(); }catch(x){} }
 })});
 /* Meta Pixel: Lead = qualified form only (wants the 199 DH dossier). WhatsApp clicks = Contact only. Once per visitor per 24 h. */
 var _sent={};
